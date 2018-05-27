@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
+    targetNamespace="http://www.holiday.com/inbox" xmlns:ibx="http://www.holiday.com/inbox"
+    xmlns:sys="http://www.holiday.com/system">
+    <xs:import namespace="http://www.holiday.com/system" schemaLocation="booking.xsd"/>
+    <xs:element name="Message">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="sender" type="sys:TUser"/>
+                <xs:element name="receiver" type="sys:TUser"/>
+                <xs:element name="content" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

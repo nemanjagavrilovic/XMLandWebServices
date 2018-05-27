@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
+    targetNamespace="http://www.holiday.com/system" xmlns:sys="http://www.holiday.com/system">
+    <xs:complexType abstract="true" name="TUser">
+        <xs:sequence>
+            <xs:element name="username" type="xs:string"/>
+            <xs:element name="password" type="xs:string"/>
+            <xs:element name="email" type="xs:string"/>
+            <xs:element name="name" type="xs:string"/>
+            <xs:element name="surname" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="Comment">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="author" type="sys:TUser"/>
+                <xs:element name="content" type="xs:string"/>
+                <xs:element name="approved" type="xs:boolean"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="Location">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Country" type="xs:string"/>
+                <xs:element name="City" type="xs:string"/>
+                <xs:element name="Street" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="Accomodation">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="name" type="xs:string"/>
+                <xs:element name="Owner" type="sys:Agent"/>
+                <xs:element name="description" type="xs:string"/>
+                <xs:element ref="sys:objectType"/>
+                <xs:element ref="sys:objectCategory"/>
+                <xs:element maxOccurs="unbounded" minOccurs="0" ref="sys:Picture"/>
+                <xs:element name="maxPerson" type="xs:int"/>
+                <xs:element maxOccurs="unbounded" minOccurs="0" ref="sys:Comment"/>
+                <xs:element ref="sys:Location"/>
+                <xs:element maxOccurs="unbounded" minOccurs="0" ref="sys:Raiting"/>
+                <xs:element maxOccurs="unbounded" minOccurs="0" ref="sys:services"/>
+                <xs:element ref="sys:Price_shedule"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="services">
+        <xs:complexType>
+            <xs:all>
+                <xs:element minOccurs="0" name="service" type="xs:string"/>
+            </xs:all>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="Raiting">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="sys:Accomodation"/>
+                <xs:element name="content" type="xs:string"/>
+                <xs:element name="Owner" type="sys:User"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="Price_shedule">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" minOccurs="0" name="Price">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="dateStart" type="xs:date"/>
+                            <xs:element name="dateEnd" type="xs:date"/>
+                            <xs:element name="value" type="xs:float"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:complexType name="User">
+        <xs:complexContent>
+            <xs:extension base="sys:TUser"/>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="Admin">
+        <xs:complexContent>
+            <xs:extension base="sys:TUser"/>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="Agent">
+        <xs:complexContent>
+            <xs:extension base="sys:TUser">
+                <xs:sequence>
+                    <xs:element name="PMB" type="xs:string"/>
+                    <xs:element ref="sys:Location"/>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" ref="sys:Accomodation"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:element name="objectType">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="type" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="objectCategory">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="category" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="Picture">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="url" type="xs:string"/>
+                <xs:element ref="sys:Accomodation"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
+    xmlns:sys="http://www.holiday.com/system">
+    <xs:import namespace="http://www.holiday.com/system" schemaLocation="booking.xsd"/>
+    <xs:element name="Arrangment">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="dateStart" type="xs:date"/>
+                <xs:element name="dateEnd" type="xs:date"/>
+                <xs:element ref="sys:Accomodation"/>
+                <xs:element name="numberOfPeople" type="xs:int"/>
+                <xs:element name="Owner" type="sys:User"/>
+                <xs:element name="realized" type="xs:boolean"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>
