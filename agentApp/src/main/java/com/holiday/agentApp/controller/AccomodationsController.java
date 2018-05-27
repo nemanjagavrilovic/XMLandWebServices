@@ -24,7 +24,7 @@ public class AccomodationsController {
 	@RequestMapping("/accomodation/{id}")
 	public String getAccomodation(@PathVariable ("id") Long id,HttpServletRequest request){
 		Accomodation accom=accomodationService.findById(id);
-		request.getSession().setAttribute("accomodation", accom);
+		request.getSession().setAttribute("accom", accom);
 		return "forward:/accomodation.jsp";
 	}
 	
