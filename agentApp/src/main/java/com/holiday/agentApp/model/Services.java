@@ -52,7 +52,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {
+@XmlType(name = "", propOrder = {"id","service"
 
 })
 @XmlRootElement(name = "services")
@@ -66,21 +66,14 @@ public class Services implements Serializable {
     @XmlElement(defaultValue = "false")
     protected String service;
     
-    @ManyToMany
-    protected List<Accomodation> accomodations;
-    @JsonIgnore
-    public List<Accomodation> getAccomodations() {
-		return accomodations;
-	}
-	public void setAccomodations(List<Accomodation> accomodations) {
-		this.accomodations = accomodations;
-	}
+    
 	public void setId(Long id) {
 		this.id = id;
 	}
 	public void setService(String service) {
 		this.service = service;
 	}
+	public Services(){}
 	/**
      * Gets the value of the parking property.
      * 

@@ -39,5 +39,5 @@ public class User
     extends TUser implements Serializable
 {
 
-
+	public User(){}
 }

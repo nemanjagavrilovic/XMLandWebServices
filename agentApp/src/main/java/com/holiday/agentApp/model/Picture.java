@@ -18,6 +18,7 @@ import javax.persistence.ManyToOne;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
 
 
@@ -42,9 +43,9 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "Picture", propOrder = {
+@XmlType(name = "Picture", propOrder = {"id",
     "url",
-    "accomodation"
+    
 })
 @Entity
 public class Picture implements Serializable{
@@ -55,10 +56,8 @@ public class Picture implements Serializable{
 	
     @XmlElement(required = true)
     protected String url;
-    @ManyToOne
-    @XmlElement(name = "Accomodation", required = true)
-    protected Accomodation accomodation;
-
+   
+    public Picture(){}
     /**
      * Gets the value of the url property.
      * 
@@ -91,10 +90,8 @@ public class Picture implements Serializable{
      *     {@link Accomodation }
      *     
      */
-    public Accomodation getAccomodation() {
-        return accomodation;
-    }
-
+    
+   
     /**
      * Sets the value of the accomodation property.
      * 
@@ -103,8 +100,6 @@ public class Picture implements Serializable{
      *     {@link Accomodation }
      *     
      */
-    public void setAccomodation(Accomodation value) {
-        this.accomodation = value;
-    }
+  
 
 }

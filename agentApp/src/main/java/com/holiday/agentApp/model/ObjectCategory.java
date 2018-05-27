@@ -42,7 +42,7 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {
+@XmlType(name = "", propOrder = {"id",
     "category"
 })
 @XmlRootElement(name = "objectCategory")

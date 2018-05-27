@@ -85,10 +85,10 @@
 	<target name="generate-code">
 		<echo level="info" message="Generating code using java2ws..."/>
 
-		<java2ws sei.class="com.example.demo.service.HelloService" 
-	    		 port.name="HelloPort" 
-	    	     service.name="HelloService" 
-	    	     wsdl.file="${wsdl.dir}/HelloService.wsdl"/>
+		<java2ws sei.class="com.holiday.agentApp.webService.AccomodationWebService" 
+	    		 port.name="AccomodationPort" 
+	    	     service.name="AccomodationService" 
+	    	     wsdl.file="${wsdl.dir}/AccomodationService.wsdl"/>
 
 			</target>
 

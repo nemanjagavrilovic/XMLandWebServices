@@ -35,5 +35,5 @@ public class Admin
     extends TUser
 {
 
-
+	public Admin(){}
 }

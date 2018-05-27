@@ -142,7 +142,7 @@ public class CreateAccomodation {
 		Accomodation accomodation=accomodationService.findById(id);
 		
 		for(Picture item:pictures){
-			item.setAccomodation(accomodation);
+			
 			accomodation.getPicture().add(item);
 		}
 		accomodationService.save(accomodation);

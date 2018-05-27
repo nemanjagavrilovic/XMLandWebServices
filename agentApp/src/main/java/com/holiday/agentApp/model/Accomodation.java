@@ -64,6 +64,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
+	"id",
     "name",
     "owner",
     "description",
@@ -145,7 +146,10 @@ public class Accomodation implements Serializable {
         return name;
     }
 
-    /**
+    public Accomodation() {
+		super();
+	}
+	/**
      * Sets the value of the name property.
      * 
      * @param value

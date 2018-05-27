@@ -48,6 +48,7 @@ import javax.xml.bind.annotation.XmlType;
 @Entity
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Agent", propOrder = {
+	"id",
     "pmb",
     "location",
     "accomodation"
@@ -76,6 +77,7 @@ public class Agent
      *     {@link String }
      *     
      */
+    public Agent(){}
     public String getPMB() {
         return pmb;
     }

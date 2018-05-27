@@ -44,7 +44,7 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {
+@XmlType(name = "", propOrder = {"id",
     "accomodation",
     "content",
     "owner"
@@ -66,6 +66,7 @@ public class Raiting implements Serializable{
     @XmlElement(name = "Owner", required = true)
     protected User owner;
 
+    public Raiting(){}
     /**
      * Gets the value of the accomodation property.
      * 

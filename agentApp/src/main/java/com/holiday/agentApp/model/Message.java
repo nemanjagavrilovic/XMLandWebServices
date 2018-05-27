@@ -44,7 +44,7 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {
+@XmlType(name = "", propOrder = {"id",
     "sender",
     "receiver",
     "content"
@@ -64,7 +64,7 @@ public class Message implements Serializable{
     protected TUser receiver;
     @XmlElement(namespace = "http://www.holiday.com/inbox", required = true)
     protected String content;
-
+    public Message(){}
     /**
      * Gets the value of the sender property.
      * 

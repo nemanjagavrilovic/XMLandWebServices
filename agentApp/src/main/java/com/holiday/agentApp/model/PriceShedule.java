@@ -61,7 +61,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {
+@XmlType(name = "", propOrder = {"id",
     "price"
 })
 @XmlRootElement(name = "Price_shedule")
@@ -76,6 +76,7 @@ public class PriceShedule implements Serializable {
     @OneToMany(cascade = {CascadeType.ALL})
     protected List<Price> price;
 
+    public PriceShedule(){}
     /**
      * Gets the value of the price property.
      * 

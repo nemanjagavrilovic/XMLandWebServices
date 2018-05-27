@@ -46,7 +46,7 @@ import javax.xml.bind.annotation.XmlType;
  */
 @Entity
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {
+@XmlType(name = "", propOrder = {"id",
     "author",
     "content",
     "approved"
@@ -65,7 +65,8 @@ public class Comment implements Serializable{
     protected String content;
     @Column
     protected boolean approved;
-
+    
+    public Comment(){}
     /**
      * Gets the value of the author property.
      * 

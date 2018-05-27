@@ -40,7 +40,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = { "dateStart", "dateEnd", "value" })
+@XmlType(name = "", propOrder = {"id", "dateStart", "dateEnd", "value" })
 @Entity
 public class Price implements Serializable {
 	@Id
@@ -57,6 +57,7 @@ public class Price implements Serializable {
 	@Column(nullable = false)
 	protected float value;
 
+	
 	/**
 	 * Gets the value of the dateStart property.
 	 * 

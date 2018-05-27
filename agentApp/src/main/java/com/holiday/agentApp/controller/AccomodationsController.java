@@ -1,12 +1,15 @@
 package com.holiday.agentApp.controller;
 
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.xml.namespace.QName;
+import javax.xml.ws.Service;
+import javax.xml.ws.soap.SOAPBinding;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,8 +26,21 @@ public class AccomodationsController {
 	
 	@RequestMapping("/accomodation/{id}")
 	public String getAccomodation(@PathVariable ("id") Long id,HttpServletRequest request){
-		Accomodation accom=accomodationService.findById(id);
-		request.getSession().setAttribute("accomodation", accom);
+		String address="http://localhost:9090/Service/AccomodationWebService";
+		QName serviceName = new QName("http://webService.agentApp.holiday.com/", "AccomodationWebService");
+	        QName portName = new QName("http://webService.agentApp.holiday.com/", "AccomodationWebServiceImplPort");
+
+	        Service service = null;
+			try {
+				service = Service.create(new URL(address+"?wsdl"), serviceName);
+			} catch (MalformedURLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+	         com.holiday.agentApp.webService.AccomodationWebService client = service.getPort(portName,  com.holiday.agentApp.webService.AccomodationWebService.class);
+	        
+		Accomodation response= client.findById(id);
+		request.getSession().setAttribute("accom", response);
 		return "forward:/accomodation.jsp";
 	}
 	

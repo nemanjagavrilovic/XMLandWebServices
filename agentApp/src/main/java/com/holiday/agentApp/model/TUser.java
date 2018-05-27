@@ -45,7 +45,7 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "TUser", propOrder = {
+@XmlType(name = "TUser", propOrder = {"id",
     "username",
     "password",
     "email",
@@ -75,6 +75,7 @@ public abstract class TUser implements Serializable {
     @XmlElement(required = true)
     protected String surname;
 
+    public TUser(){}
     /**
      * Gets the value of the username property.
      * 
