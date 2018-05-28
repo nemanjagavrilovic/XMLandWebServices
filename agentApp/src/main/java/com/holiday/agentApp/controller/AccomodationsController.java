@@ -41,6 +41,8 @@ public class AccomodationsController {
 	        
 		Accomodation response= client.findById(id);
 		request.getSession().setAttribute("accom", response);
+		Accomodation accom=accomodationService.findById(id);
+		request.getSession().setAttribute("accom", accom);
 		return "forward:/accomodation.jsp";
 	}
 	
