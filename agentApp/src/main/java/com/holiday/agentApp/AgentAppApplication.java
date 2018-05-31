@@ -7,7 +7,6 @@ import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication(scanBasePackages={
 "com.holiday.agentApp"})
-@ComponentScan({"com.holiday.agentApp"})
 public class AgentAppApplication  {
 	
 

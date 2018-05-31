@@ -4,6 +4,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.xml.bind.JAXBElement;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -15,6 +18,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.holiday.agentApp.client.LocationClient;
+import com.holiday.agentApp.client.ObjectCategoryClient;
 import com.holiday.agentApp.model.Accomodation;
 import com.holiday.agentApp.model.Location;
 import com.holiday.agentApp.model.ObjectCategory;
@@ -29,6 +34,7 @@ import com.holiday.agentApp.service.ObjectCategoryService;
 import com.holiday.agentApp.service.ObjectTypeService;
 import com.holiday.agentApp.service.PriceService;
 import com.holiday.agentApp.service.ServicesService;
+import com.holiday.agentApp.usage.FindByIdResponse;
 
 @Controller
 @RequestMapping("/createAccomodation")
@@ -46,8 +52,19 @@ public class CreateAccomodation {
 	@Autowired
 	private ObjectTypeService objectTypeSerivce;
 	
+	
+	@Autowired
+	private ObjectCategoryClient objectCategoryClient;
+	
 	@Autowired
 	private ObjectCategoryService objectCategorySerivce;
+	
+	@RequestMapping(value="/")
+	public String createAccomodatinoPage(HttpServletRequest request){
+		JAXBElement<com.holiday.agentApp.objectCategoryUsage.FindByIdResponse> oobject= objectCategoryClient.findByIdObject(1L);
+		System.out.println("Kategorija: "+oobject.getValue().getObjectCategory().getCategory());
+		return "forward:/createAccomodation.jsp";
+	}
 	
 	@RequestMapping(value="/addLocation",method=RequestMethod.POST,
 			consumes = MediaType.APPLICATION_JSON_VALUE,

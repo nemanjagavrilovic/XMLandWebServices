@@ -84,14 +84,21 @@
 
 	<target name="generate-code">
 		<echo level="info" message="Generating code using java2ws..."/>
-
+	<!--
 		<java2ws sei.class="com.holiday.agentApp.webService.AccomodationWebService" 
 	    		 port.name="AccomodationPort" 
 	    	     service.name="AccomodationService" 
 	    	     wsdl.file="${wsdl.dir}/AccomodationService.wsdl"/>
 
 			</target>
+	-->
+		<java2ws sei.class="com.holiday.agentApp.webService.SyncService" 
+	    		 port.name="SyncPort" 
+	    	     service.name="SyncService" 
+	    	     wsdl.file="${wsdl.dir}/SyncService.wsdl"/>
 
+			</target>
+	
 	<target name="compile" depends="init">
 		<javac destdir="${bin.dir}" includeantruntime="true" debug="on">
 			<classpath>

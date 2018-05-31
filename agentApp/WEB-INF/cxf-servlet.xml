@@ -30,5 +30,11 @@
   	implementor="com.holiday.agentApp.webService.AccomodationServiceImpl"
   	wsdlLocation="/wsdl/AccomodatoinService.wsdl"/>
   
+    <jaxws:endpoint 
+    
+    id="sync" 
+    address="/SyncService"
+  	implementor="com.holiday.agentApp.webService.SyncServiceImpl"
+  	wsdlLocation="/wsdl/SyncService.wsdl"/>
   
 </beans>

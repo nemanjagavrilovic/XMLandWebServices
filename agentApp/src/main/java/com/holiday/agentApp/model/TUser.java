@@ -60,6 +60,13 @@ import javax.xml.bind.annotation.XmlType;
 @Entity
 public abstract class TUser implements Serializable {
 
+	public void setId(Long id) {
+		this.id = id;
+	}
+	public Long getId() {
+		return id;
+	}
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	protected Long id;

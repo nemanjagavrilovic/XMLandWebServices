@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 
 import com.holiday.agentApp.model.Location;
 import com.holiday.agentApp.repository.LocationRepository;
+
 @Service
 public class LocationServiceImpl implements LocationService{
 

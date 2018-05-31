@@ -68,6 +68,9 @@ import javax.xml.datatype.XMLGregorianCalendar;
 @Entity
 public class PriceShedule implements Serializable {
 	
+	public Long getId() {
+		return id;
+	}
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	protected Long id;

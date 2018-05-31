@@ -20,6 +20,9 @@ import com.holiday.agentApp.repository.AccomodationRepository;
 @WebService(endpointInterface = "com.holiday.agentApp.webService.AccomodationWebService", serviceName = "AccomodationWebService")                      
 public class AccomodationWebServiceImpl implements AccomodationWebService {
 
+	public AccomodationWebServiceImpl() {
+		// TODO Auto-generated constructor stub
+	}
 	private AccomodationRepository accomodatioRepository;
 
 	@Autowired

@@ -5,7 +5,7 @@
 <html>
 <head>
 <script type="text/javascript"	src="${pageContext.request.contextPath}/js/jquery.min.js"> </script>
-<script type="text/javascript"	src="${pageContext.request.contextPath}/js/myAccom.js"> </script>
+<script type="text/javascript"	src="${pageContext.request.contextPath}/js/accomodation.js"> </script>
 	
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Accomodations</title>
@@ -26,6 +26,9 @@
 					<tr>
 						<td>Kapacitet:</td>
 						<td>${accom.maxPerson }</td>
+					</tr>
+					<tr colspan=2>
+						<td><a id="publish" href="../publish/${accom.id }">Publish</a></td>
 					</tr>
 			</tbody>
 		</table>
