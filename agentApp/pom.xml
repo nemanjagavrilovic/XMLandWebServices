@@ -107,7 +107,7 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
-			<!--   
+			  
 			<plugin>
 			      <groupId>org.jvnet.jaxb2.maven2</groupId>
 			       <artifactId>maven-jaxb2-plugin</artifactId>
@@ -123,12 +123,12 @@
        			 <generatePackage>xml.wsdl</generatePackage>
 			          <schemas>
 			            <schema>
-			                <url>http://localhost:1111/Service/ObjectCategoryWebService?wsdl</url>
+			                <url>http://localhost:1111/Service/UserWebService?wsdl</url>
 			            </schema>
 			        </schemas>
 			          </configuration>
 			</plugin>
-			-->
+			
 		</plugins>
 	</build>
 

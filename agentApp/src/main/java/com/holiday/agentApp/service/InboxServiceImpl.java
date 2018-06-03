@@ -1,5 +1,7 @@
 package com.holiday.agentApp.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +18,16 @@ public class InboxServiceImpl implements InboxService{
 	public Inbox findBySenderAndReceiver(TUser senderId, TUser receiverId) {
 		// TODO Auto-generated method stub
 		return inboxRepository.findBySenderAndReceiver(senderId, receiverId);
+	}
+	@Override
+	public List<Inbox> findByReceiver(TUser receiver) {
+		// TODO Auto-generated method stub
+		return inboxRepository.findByReceiver(receiver);
+	}
+	@Override
+	public Inbox findById(Long id) {
+		// TODO Auto-generated method stub
+		return inboxRepository.findOne(id);
 	}
 
 }

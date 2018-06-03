@@ -5,19 +5,18 @@ import javax.xml.bind.JAXBElement;
 import org.springframework.ws.client.core.support.WebServiceGatewaySupport;
 import org.springframework.ws.soap.client.core.SoapActionCallback;
 
-import com.holiday.agentApp.usage.FindAllRequest;
-import com.holiday.agentApp.usage.FindAllResponse;
-import com.holiday.agentApp.usage.FindByIdRequest;
-import com.holiday.agentApp.usage.FindByIdResponse;
+import com.holiday.agentApp.requestAndResponse.LocationByIdResponse;
+import com.holiday.agentApp.requestAndResponse.LocationRequest;
+import com.holiday.agentApp.requestAndResponse.LocationResponse;
 
 
 public class LocationClient extends WebServiceGatewaySupport {
 
-	public JAXBElement<FindAllResponse> getAllLocations(){
+	public JAXBElement<LocationResponse> getAllLocations(){
 		
-		FindAllRequest request=new FindAllRequest();
+		LocationRequest request=new LocationRequest();
 		@SuppressWarnings("unchecked")
-		JAXBElement<FindAllResponse> response = (JAXBElement<FindAllResponse>) getWebServiceTemplate()
+		JAXBElement<LocationResponse> response = (JAXBElement<LocationResponse>) getWebServiceTemplate()
 				.marshalSendAndReceive("http://localhost:1111/Service/LocationWebService?wsdl",
 						request,
 						new SoapActionCallback("http://webService.projekat.xml/findAll"));
@@ -25,12 +24,12 @@ public class LocationClient extends WebServiceGatewaySupport {
 		return response;
 
 	}
-	public JAXBElement<FindByIdResponse> findById(Long id){
+	
+public JAXBElement<LocationByIdResponse> findByIdLocation(){
 		
-		FindByIdRequest request=new FindByIdRequest();
-		request.setId(id);
+		LocationRequest request=new LocationRequest();
 		@SuppressWarnings("unchecked")
-		JAXBElement<FindByIdResponse> response = (JAXBElement<FindByIdResponse>) getWebServiceTemplate()
+		JAXBElement<LocationByIdResponse> response = (JAXBElement<LocationByIdResponse>) getWebServiceTemplate()
 				.marshalSendAndReceive("http://localhost:1111/Service/LocationWebService?wsdl",
 						request,
 						new SoapActionCallback("http://webService.projekat.xml/findById"));
@@ -38,5 +37,4 @@ public class LocationClient extends WebServiceGatewaySupport {
 		return response;
 
 	}
-	
 }

@@ -23,7 +23,7 @@ $(document).on('click','#addAddress',function(e){
 	console.log(data)
 	$.ajax({
 		type:'POST',
-		url:'createAccomodation/addLocation',
+		url:'../createAccomodation/addLocation',
 		contentType:'application/json',
 		dataType:'json',
 		data:data,
@@ -46,7 +46,7 @@ $(document).on('click','#addPrice',function(e){
 	
 	$.ajax({
 		type:'POST',
-		url:'createAccomodation/addPrice',
+		url:'../createAccomodation/addPrice',
 		dataType:'json',
 		contentType:'application/json',
 		data:data,
@@ -75,7 +75,7 @@ $(document).on('click',"#create",function(e){
 	})
 	$.ajax({
 		type:'POST',
-		url:'createAccomodation/create',
+		url:'../createAccomodation/create',
 		contentType:'application/json',
 		dataType:'json',
 		data:accomodation,
@@ -86,7 +86,7 @@ $(document).on('click',"#create",function(e){
 	})
 	getPriceShedule()
 	$.ajax({
-		url:'createAccomodation/setPriceShedule/'+accomodationID,
+		url:'../createAccomodation/setPriceShedule/'+accomodationID,
 		type:'POST',
 		contentType:'application/json',
 		dataType:'json',
@@ -102,7 +102,7 @@ $(document).on('click',"#create",function(e){
 function getObjectType(){
 	
 	$.ajax({
-		url:'createAccomodation/getObjectType/'+$("#objectType option:selected").attr("id"),
+		url:'../createAccomodation/getObjectType/'+$("#objectType option:selected").attr("id"),
 		type:'GET',
 		async:false,
 		success:function(data){
@@ -115,7 +115,7 @@ function getObjectType(){
 function getObjectCategory(){
 	
 	$.ajax({
-		url:'createAccomodation/getObjectCategory/'+$("#objectCategory option:selected").attr("id"),
+		url:'../createAccomodation/getObjectCategory/'+$("#objectCategory option:selected").attr("id"),
 		type:'GET',
 		async:false,
 		success:function(data){
@@ -128,7 +128,7 @@ function getObjectCategory(){
 function getLocation(){
 	
 	$.ajax({
-		url:'createAccomodation/getLocation/'+$("#location option:selected").attr("id"),
+		url:'../createAccomodation/getLocation/'+$("#location option:selected").attr("id"),
 		type:'GET',
 		async:false,
 		success:function(data){
@@ -147,7 +147,7 @@ function getServices(){
 	
 	$.ajax({
 		type:'POST',
-		url:'createAccomodation/getServices',
+		url:'../createAccomodation/getServices',
 		data:JSON.stringify({
 			"array":ids,
 		}),
@@ -211,7 +211,7 @@ function uploadImage() {
 
 function setPictures(accomodationID){
 	$.ajax({
-		url:'createAccomodation/setPictures/'+accomodationID,
+		url:'../createAccomodation/setPictures/'+accomodationID,
 		type:'POST',
 		contentType:'application/json',
 		dataType:'json',

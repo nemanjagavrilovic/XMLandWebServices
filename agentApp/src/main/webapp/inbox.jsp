@@ -5,18 +5,27 @@
 <html>
 <head>
 <script type="text/javascript"	src="${pageContext.request.contextPath}/js/jquery.min.js"> </script>
-<script type="text/javascript"	src="${pageContext.request.contextPath}/js/arrangments.js"> </script>
-	
+<script type="text/javascript"	src="${pageContext.request.contextPath}/js/inbox.js"> </script>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/inbox.css">
+
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
 </head>
 <body>
-	
-	<c:forEach items="${messages}" var="message">
-		<div>
-			${message.content}<br><br><br>
-			${message.sentBy }
+	<div class="inboxes">
+			<c:forEach items="${inboxes}" var="inbox">
+			
+			<div>
+				<a id="link" href="/inbox/${inbox.id}">${inbox.sender.name} ${inbox.sender.surname }</a>
+			</div>
+			</c:forEach>
 		</div>
-	</c:forEach>
+	<div class="container">
+			<div class="messages">
+		
+			</div>
+			<div class="sending"></div>
+	</div>
+	
 </body>
 </html>

@@ -17,11 +17,18 @@
 		<label>Naziv: </label><input type="text" id="name"><br>
 		<label>Opis: </label><input type="text" id="description"><br>
 		<label>Tip: </label><select id="objectType"><option id="5">Kuca</option></select><br>
-		<label>Kategorija: </label><select id="objectCategory"><option id="2">1 zvezdica</option></select><br>
+		<label>Kategorija: </label>
+		<select id="objectCategory">
+		<c:forEach items="${categories}" var="category">
+				<option id=${category.id }>${category.category }</option>
+			</c:forEach>
+		</select><br>
 		<label>Kapacitet: </label><input type="text" id="maxPerson"><br>
 		<label>Lokacija: </label>
 		<select id="location">
-			
+			<c:forEach items="${locations}" var="location">
+				<option id=${location.id }>${location.street },${location.city },${location.country}</option>
+			</c:forEach>
 		</select>
 		<input value="Add address manualy" type="button" id="manualAddress"><br>
 		<div id="addressDiv"style="display:none">

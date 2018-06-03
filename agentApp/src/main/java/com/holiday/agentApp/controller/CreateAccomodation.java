@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.holiday.agentApp.client.LocationClient;
+import com.holiday.agentApp.client.MessageClient;
 import com.holiday.agentApp.client.ObjectCategoryClient;
 import com.holiday.agentApp.model.Accomodation;
 import com.holiday.agentApp.model.Location;
@@ -28,13 +29,14 @@ import com.holiday.agentApp.model.Picture;
 import com.holiday.agentApp.model.Price;
 import com.holiday.agentApp.model.PriceShedule;
 import com.holiday.agentApp.model.Services;
+import com.holiday.agentApp.requestAndResponse.LocationByIdResponse;
+import com.holiday.agentApp.requestAndResponse.LocationResponse;
 import com.holiday.agentApp.service.AccomodationService;
 import com.holiday.agentApp.service.LocationService;
 import com.holiday.agentApp.service.ObjectCategoryService;
 import com.holiday.agentApp.service.ObjectTypeService;
 import com.holiday.agentApp.service.PriceService;
 import com.holiday.agentApp.service.ServicesService;
-import com.holiday.agentApp.usage.FindByIdResponse;
 
 @Controller
 @RequestMapping("/createAccomodation")
@@ -52,17 +54,25 @@ public class CreateAccomodation {
 	@Autowired
 	private ObjectTypeService objectTypeSerivce;
 	
-	
+	@Autowired
+	private LocationClient locationClient;
 	@Autowired
 	private ObjectCategoryClient objectCategoryClient;
+	
 	
 	@Autowired
 	private ObjectCategoryService objectCategorySerivce;
 	
 	@RequestMapping(value="/")
 	public String createAccomodatinoPage(HttpServletRequest request){
-		JAXBElement<com.holiday.agentApp.objectCategoryUsage.FindByIdResponse> oobject= objectCategoryClient.findByIdObject(1L);
-		System.out.println("Kategorija: "+oobject.getValue().getObjectCategory().getCategory());
+		JAXBElement<LocationResponse> object= (JAXBElement<LocationResponse>) locationClient.getAllLocations();
+		System.out.println(object.getValue().getLocations().size());
+	//	JAXBElement<com.holiday.agentApp.objectCategoryUsage.FindAllResponse> objectCategory= (JAXBElement<com.holiday.agentApp.objectCategoryUsage.FindAllResponse>) objectCategoryClient.findAll();
+	//.out.println(objectCategory.getValue().getObjectCategory().size());
+		
+		request.getSession().setAttribute("locations", object.getValue().getLocations());
+	//	request.getSession().setAttribute("categories", objectCategory.getValue().getObjectCategory());
+		
 		return "forward:/createAccomodation.jsp";
 	}
 	
@@ -87,7 +97,10 @@ public class CreateAccomodation {
 	}
 	@RequestMapping(value="/getLocation/{id}",method=RequestMethod.GET)
 	public ResponseEntity<Location> getLocation(@PathVariable ("id") Long id){
-		return new ResponseEntity<Location>(locationService.findById(id),HttpStatus.OK);
+		JAXBElement<LocationByIdResponse> object= (JAXBElement<LocationByIdResponse>) locationClient.findByIdLocation();
+		System.out.println(object.getValue().getLocation().getCity());
+	
+		return new ResponseEntity<Location>(object.getValue().getLocation(),HttpStatus.OK);
 	}
 	@RequestMapping(value="/addPrice",method=RequestMethod.POST,
 			consumes = MediaType.APPLICATION_JSON_VALUE,

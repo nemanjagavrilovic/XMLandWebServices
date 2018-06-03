@@ -1,0 +1,45 @@
+.inboxes
+{
+	float:left;	
+	width:30%
+}
+.container{
+	float:right;
+	width:70%;
+}
+.messages{
+	overflow:auto;
+	height:600px;
+}
+.sending{
+	
+	position: fixed;
+    bottom:0;
+    width: 100%;
+	
+}
+.sent
+{
+	text-align:right;
+	broder-style:soild 1px ;
+	background-color:#2132fe;
+	display: inline-block;
+	border-radius: 25px;
+	color:white;
+	height:25px;
+	padding: 5px; 
+	float:right;
+	overflow: auto;
+	
+}
+
+div.received{
+	background-color:#2132fe;
+	broder-style:soild 1px ;
+	text-align:left;
+	display: inline-block;
+	color:white;
+	border-radius: 25px;
+	height:25px;
+	padding: 5px; 
+}

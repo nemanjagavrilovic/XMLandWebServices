@@ -51,9 +51,10 @@ public class ObjectCategory implements Serializable{
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
+	 @XmlElement(name = "id", required = true)
 	protected Long id;
 
-	@XmlElement(name = "Category", required = true)
+	@XmlElement(name = "category", required = true)
     protected String category;
 
 	
@@ -62,6 +63,7 @@ public class ObjectCategory implements Serializable{
      * Gets the value of the category property.
      * 
      */
+	
     public String getCategory() {
         return category;
     }
@@ -73,6 +75,7 @@ public class ObjectCategory implements Serializable{
     public void setCategory(String value) {
         this.category = value;
     }
+   
     public Long getId() {
 		return id;
 	}
