@@ -56,6 +56,14 @@ import javax.xml.bind.annotation.XmlType;
 @Entity(name="Inbox")
 public class Inbox {
 
+	public Long getId() {
+		return id;
+	}
+
+	public void setMessage(List<Message> message) {
+		this.message = message;
+	}
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	protected Long id;
