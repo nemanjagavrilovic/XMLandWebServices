@@ -12,7 +12,7 @@
 </head>
 <body>
 	
-	<table>
+	<table border=2>
 		<thead>
 			<tr>
 				<th>Korisnik:</th>
@@ -26,16 +26,19 @@
 		<tbody>
 			<c:forEach items="${arrangments}" var="arrangment">
 				<tr>
-					<td>${arrangment.owner }</td>
+					<td>${arrangment.owner.username }</td>
 					<td>${arrangment.dateStart }</td>
 					<td>${arrangment.dateEnd }</td>
-					<td>${arrangment.accomodation }</td>
-					<c:if test=${arrangment.realized==true }>
-						<button value="Realized"></button>
+					<td>${arrangment.accomodation.name }</td>
+					<td>
+					<c:if test="${arrangment.realized==true}">
+						<a id="notRealized" href="../arrangments/realization/${arrangment.id }/false">Realized</a>
 					</c:if>
-					<c:if test=${arrangment.realized==false }>
-						<button value="Not realized"></button>
+					<c:if test="${arrangment.realized==false }">
+						<a id="realized" href="../arrangments/realization/${arrangment.id}/true">Not realized</a>
+				
 					</c:if>
+					</td>
 				</tr>
 			</c:forEach>
 		</tbody>

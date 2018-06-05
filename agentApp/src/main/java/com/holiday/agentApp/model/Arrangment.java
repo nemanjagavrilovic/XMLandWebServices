@@ -8,12 +8,14 @@
 
 package com.holiday.agentApp.model;
 
-import java.sql.Date;
+
+import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -66,18 +68,28 @@ public class Arrangment {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	protected Long id;
 	
-    @XmlElement(namespace = "", required = true)
+    public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	@XmlElement(namespace = "", required = true)
     @XmlSchemaType(name = "date")
     protected Date dateStart;
     @XmlElement(namespace = "", required = true)
     @XmlSchemaType(name = "date")
     protected Date dateEnd;
     @XmlElement(name = "Accomodation", required = true)
+    @OneToOne
     protected Accomodation accomodation;
     @XmlElement(namespace = "")
     protected int numberOfPeople;
     @XmlElement(name = "Owner", namespace = "", required = true)
-    protected User owner;
+    @OneToOne
+    protected TUser owner;
     @XmlElement(namespace = "")
     protected boolean realized;
 
@@ -177,7 +189,7 @@ public class Arrangment {
      *     {@link User }
      *     
      */
-    public User getOwner() {
+    public TUser getOwner() {
         return owner;
     }
 
@@ -189,7 +201,7 @@ public class Arrangment {
      *     {@link User }
      *     
      */
-    public void setOwner(User value) {
+    public void setOwner(TUser value) {
         this.owner = value;
     }
 

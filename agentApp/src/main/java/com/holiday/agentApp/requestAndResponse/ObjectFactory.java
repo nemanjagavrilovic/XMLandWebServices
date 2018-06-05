@@ -51,7 +51,11 @@ public class ObjectFactory {
     private final static QName _MessageByInboxResponse_QNAME = new QName("http://webService.projekat.xml/", "messageByInboxResponse");
     private final static QName _UserByIdRequest_QNAME = new QName("http://webService.projekat.xml/", "userByIdRequest");
     private final static QName _UserByIdResponse_QNAME = new QName("http://webService.projekat.xml/", "userByIdResponse");
-   
+    private final static QName _ArrangmentAllRequest_QNAME = new QName("http://webService.projekat.xml/", "arrangmentAllRequest");
+    private final static QName _ArrangmentAllResponse_QNAME = new QName("http://webService.projekat.xml/", "arrangmentAllResponse");
+    private final static QName _ArrangmentUpdateRequest_QNAME = new QName("http://webService.projekat.xml/", "arrangmentUpdateRequest");
+    private final static QName _ArrangmentUpdateResponse_QNAME = new QName("http://webService.projekat.xml/", "arrangmentUpdateResponse");
+
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: xml.wsdl
      * 
@@ -63,9 +67,40 @@ public class ObjectFactory {
      * Create an instance of {@link Accomodation }
      * 
      */
- 
+    /**
+     * Create an instance of {@link ArrangmentUpdateResponse }
+     * 
+     */
+    public ArrangmentUpdateResponse createArrangmentUpdateResponse() {
+        return new ArrangmentUpdateResponse();
+    }
+
+    /**
+     * Create an instance of {@link ArrangmentAllResponse }
+     * 
+     */
+    public ArrangmentAllResponse createArrangmentAllResponse() {
+        return new ArrangmentAllResponse();
+    }
     public LocationResponse createLocationResponse() {
         return new LocationResponse();
+    }
+    
+    
+    /**
+     * Create an instance of {@link ArrangmentAllRequest }
+     * 
+     */
+    public ArrangmentAllRequest createArrangmentAllRequest() {
+        return new ArrangmentAllRequest();
+    }
+
+    /**
+     * Create an instance of {@link ArrangmentUpdateRequest }
+     * 
+     */
+    public ArrangmentUpdateRequest createArrangmentUpdateRequest() {
+        return new ArrangmentUpdateRequest();
     }
     /**
      * Create an instance of {@link MessageByInboxResponse }
@@ -357,6 +392,42 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://webService.projekat.xml/", name = "userByIdResponse")
     public JAXBElement<UserByIdResponse> createUserByIdResponse(UserByIdResponse value) {
         return new JAXBElement<UserByIdResponse>(_UserByIdResponse_QNAME, UserByIdResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ArrangmentAllRequest }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://webService.projekat.xml/", name = "arrangmentAllRequest")
+    public JAXBElement<ArrangmentAllRequest> createArrangmentAllRequest(ArrangmentAllRequest value) {
+        return new JAXBElement<ArrangmentAllRequest>(_ArrangmentAllRequest_QNAME, ArrangmentAllRequest.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ArrangmentAllResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://webService.projekat.xml/", name = "arrangmentAllResponse")
+    public JAXBElement<ArrangmentAllResponse> createArrangmentAllResponse(ArrangmentAllResponse value) {
+        return new JAXBElement<ArrangmentAllResponse>(_ArrangmentAllResponse_QNAME, ArrangmentAllResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ArrangmentUpdateRequest }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://webService.projekat.xml/", name = "arrangmentUpdateRequest")
+    public JAXBElement<ArrangmentUpdateRequest> createArrangmentUpdateRequest(ArrangmentUpdateRequest value) {
+        return new JAXBElement<ArrangmentUpdateRequest>(_ArrangmentUpdateRequest_QNAME, ArrangmentUpdateRequest.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ArrangmentUpdateResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://webService.projekat.xml/", name = "arrangmentUpdateResponse")
+    public JAXBElement<ArrangmentUpdateResponse> createArrangmentUpdateResponse(ArrangmentUpdateResponse value) {
+        return new JAXBElement<ArrangmentUpdateResponse>(_ArrangmentUpdateResponse_QNAME, ArrangmentUpdateResponse.class, null, value);
     }
 
 }
