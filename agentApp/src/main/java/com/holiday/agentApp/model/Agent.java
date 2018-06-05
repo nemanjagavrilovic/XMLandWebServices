@@ -12,7 +12,9 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -48,7 +50,6 @@ import javax.xml.bind.annotation.XmlType;
 @Entity
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Agent", propOrder = {
-	"id",
     "pmb",
     "location",
     "accomodation"
@@ -56,17 +57,14 @@ import javax.xml.bind.annotation.XmlType;
 public class Agent
     extends TUser implements Serializable
 {
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	protected Long id;
-	
+
     @XmlElement(name = "PMB", required = true)
     protected String pmb;
     @XmlElement(name = "Location", required = true)
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     protected Location location;
     @XmlElement(name = "Accomodation")
-    @OneToMany
+    @OneToMany(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
     protected List<Accomodation> accomodation;
 
     /**

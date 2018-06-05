@@ -10,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -20,6 +21,7 @@ import com.holiday.agentApp.model.Message;
 import com.holiday.agentApp.model.TUser;
 import com.holiday.agentApp.requestAndResponse.InboxByIdResponse;
 import com.holiday.agentApp.requestAndResponse.MessageByInboxResponse;
+import com.holiday.agentApp.requestAndResponse.MessageSaveResponse;
 import com.holiday.agentApp.requestAndResponse.MessagesAllResponse;
 
 @Controller
@@ -58,17 +60,14 @@ public class InboxController {
 		return new ResponseEntity<List<Message>>(messages.getValue().getMessageSaved(),HttpStatus.OK);
 	}
 
-	@RequestMapping(value="/sendMessage",method=RequestMethod.POST)
-	public String sentMessage(){
-		JAXBElement<MessagesAllResponse> messages=messageClient.getAllMessages();
-		System.out.println(messages.getValue().getMessages().size());
-		//Message m=new Message();
-		//m.setContent("Hello");
-		//m.setId(1L);
+	@RequestMapping(value="/sendMessage/{inboxId}",method=RequestMethod.POST)
+	public ResponseEntity<Message> sentMessage(@RequestBody Message message,@PathVariable("inboxId") Long inboxId){
+		JAXBElement<InboxByIdResponse> inbox=inboxClient.findById(inboxId);
 		
-		//JAXBElement<MessageSaveResponse> mess=messageClient.saveMessage(m);
-	//	return new ResponseEntity<Message>(mess.getValue().getMessageSaved(),HttpStatus.CREATED);
-		return "forward:/createAccomodation.jsp";
+		message.setSentBy(inbox.getValue().getInbox().getReceiver());
+		message.setInbox(inbox.getValue().getInbox());
+		JAXBElement<MessageSaveResponse> mess=messageClient.saveMessage(message);
+		return new ResponseEntity<Message>(mess.getValue().getMessageSaved(),HttpStatus.CREATED);
 	}
 	
 }

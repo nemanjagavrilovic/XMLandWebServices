@@ -15,6 +15,7 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -103,7 +104,7 @@ public class Accomodation implements Serializable {
     @XmlElement(name = "Category", required = true)
     protected ObjectCategory category;
     
-    @OneToMany(cascade = {CascadeType.ALL})
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @XmlElement(name = "Picture", required = false)
     
     protected List<Picture> picture;
@@ -111,7 +112,7 @@ public class Accomodation implements Serializable {
     @Column(nullable=false)
     protected int maxPerson;
     
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @XmlElement(name = "Comment")
     protected List<Comment> comment;
     
@@ -119,15 +120,15 @@ public class Accomodation implements Serializable {
     @XmlElement(name = "Location", required = true)
     protected Location location;
     
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @XmlElement(name = "Raiting")
     protected List<Raiting> raiting;
     
-    @ManyToMany(cascade = {CascadeType.MERGE})
+    @ManyToMany(cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
     @XmlElement(name = "Services")
     protected List<Services> services;
     
-    @OneToOne(cascade = {CascadeType.ALL})
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @XmlElement(name = "Price_shedule", required = true)
     protected PriceShedule priceShedule;
 

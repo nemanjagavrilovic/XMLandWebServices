@@ -8,6 +8,9 @@
 
 package com.holiday.agentApp.model;
 
+import java.io.Serializable;
+
+import javax.persistence.Entity;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlType;
@@ -31,8 +34,9 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Admin")
+@Entity
 public class Admin
-    extends TUser
+    extends TUser implements Serializable
 {
 
 	public Admin(){}

@@ -27,11 +27,17 @@ function drawMessage(index,item){
 	}
 }
 function sendMessage(inboxId){
+	var data=JSON.stringify({
+		"content":$("#content").val()
+	})
 	$.ajax({
-		url:'../inbox/sendMessage',
+		url:'../inbox/sendMessage/'+inboxId,
 		type:'POST',
+		data:data,
+		contentType:'application/json',
+		dataType:'json',
 		success:function(data){
-			
+			$(".messages").append('<br><br><div class=sent>'+data.content+'</div>')
 		}
 	})
 
