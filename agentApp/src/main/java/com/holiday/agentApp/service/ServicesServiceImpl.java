@@ -16,5 +16,10 @@ public class ServicesServiceImpl implements ServicesService{
 		// TODO Auto-generated method stub
 		return servicesRepository.findOne(id);
 	}
+	@Override
+	public Services save(Services service) {
+		// TODO Auto-generated method stub
+		return servicesRepository.save(service);
+	}
 
 }

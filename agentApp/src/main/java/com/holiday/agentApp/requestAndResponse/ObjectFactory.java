@@ -55,18 +55,95 @@ public class ObjectFactory {
     private final static QName _ArrangmentAllResponse_QNAME = new QName("http://webService.projekat.xml/", "arrangmentAllResponse");
     private final static QName _ArrangmentUpdateRequest_QNAME = new QName("http://webService.projekat.xml/", "arrangmentUpdateRequest");
     private final static QName _ArrangmentUpdateResponse_QNAME = new QName("http://webService.projekat.xml/", "arrangmentUpdateResponse");
+    private final static QName _AccomodationSaveRequest_QNAME = new QName("http://webService.projekat.xml/", "accomodationSaveRequest");
+    private final static QName _AccomodationSaveResponse_QNAME = new QName("http://webService.projekat.xml/", "accomodationSaveResponse");
+    
+    private final static QName _ServiceAllRequest_QNAME = new QName("http://webService.projekat.xml/", "serviceAllRequest");
+    private final static QName _ServiceAllResponse_QNAME = new QName("http://webService.projekat.xml/", "serviceAllResponse");
+    private final static QName _ServiceByIdRequest_QNAME = new QName("http://webService.projekat.xml/", "serviceByIdRequest");
+    private final static QName _ServiceByIdResponse_QNAME = new QName("http://webService.projekat.xml/", "serviceByIdResponse");
 
+    private final static QName _ObjectCategoryAllRequest_QNAME = new QName("http://webService.projekat.xml/", "objectCategoryAllRequest");
+    private final static QName _ObjectCategoryAllResponse_QNAME = new QName("http://webService.projekat.xml/", "objectCategoryAllResponse");
+    private final static QName _ObjectCategoryByIdRequest_QNAME = new QName("http://webService.projekat.xml/", "objectCategoryByIdRequest");
+    private final static QName _ObjectCategoryByIdResponse_QNAME = new QName("http://webService.projekat.xml/", "objectCategoryByIdResponse");
+
+    private final static QName _ObjectTypeAllRequest_QNAME = new QName("http://webService.projekat.xml/", "objectTypeAllRequest");
+    private final static QName _ObjectTypeAllResponse_QNAME = new QName("http://webService.projekat.xml/", "objectTypeAllResponse");
+    private final static QName _ObjectTypeByIdRequest_QNAME = new QName("http://webService.projekat.xml/", "objectTypeByIdRequest");
+    private final static QName _ObjectTypeByIdResponse_QNAME = new QName("http://webService.projekat.xml/", "objectTypeByIdResponse");
+
+    private final static QName _LocationSaveRequest_QNAME = new QName("http://webService.projekat.xml/", "locationSaveRequest");
+    private final static QName _LocationSaveResponse_QNAME = new QName("http://webService.projekat.xml/", "locationSaveResponse");
+
+    private final static QName _AccomodationFindRequest_QNAME = new QName("http://webService.projekat.xml/", "accomodationFindRequest");
+    private final static QName _AccomodationFindResponse_QNAME = new QName("http://webService.projekat.xml/", "accomodationFindResponse");
+  
+    /**
+     * Create an instance of {@link AccomodationFindResponse }
+     * 
+     */
+    public AccomodationFindResponse createAccomodationFindResponse() {
+        return new AccomodationFindResponse();
+    }
+    
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: xml.wsdl
      * 
      */
     public ObjectFactory() {
     }
-
     /**
-     * Create an instance of {@link Accomodation }
+     * Create an instance of {@link ObjectCategoryAllResponse }
      * 
      */
+    public ObjectCategoryAllResponse createObjectCategoryAllResponse() {
+        return new ObjectCategoryAllResponse();
+    }
+    /**
+     * Create an instance of {@link ObjectTypeAllResponse }
+     * 
+     */
+    public ObjectTypeAllResponse createObjectTypeAllResponse() {
+        return new ObjectTypeAllResponse();
+    }
+    /**
+     * Create an instance of {@link ObjectTypeAllRequest }
+     * 
+     */
+    public ObjectTypeAllRequest createObjectTypeAllRequest() {
+        return new ObjectTypeAllRequest();
+    }
+    /**
+     * Create an instance of {@link LocationSaveResponse }
+     * 
+     */
+    public LocationSaveResponse createLocationSaveResponse() {
+        return new LocationSaveResponse();
+    }
+
+    /**
+     * Create an instance of {@link LocationSaveRequest }
+     * 
+     */
+    public LocationSaveRequest createLocationSaveRequest() {
+        return new LocationSaveRequest();
+    }
+    /**
+     * Create an instance of {@link ObjectCategoryByIdResponse }
+     * 
+     */
+    public ObjectCategoryByIdResponse createObjectCategoryByIdResponse() {
+        return new ObjectCategoryByIdResponse();
+    }
+
+    /**
+     * Create an instance of {@link ObjectCategoryByIdRequest }
+     * 
+     */
+    public ObjectCategoryByIdRequest createObjectCategoryByIdRequest() {
+        return new ObjectCategoryByIdRequest();
+    }
     /**
      * Create an instance of {@link ArrangmentUpdateResponse }
      * 
@@ -75,6 +152,13 @@ public class ObjectFactory {
         return new ArrangmentUpdateResponse();
     }
 
+    /**
+     * Create an instance of {@link ObjectCategoryAllRequest }
+     * 
+     */
+    public ObjectCategoryAllRequest createObjectCategoryAllRequest() {
+        return new ObjectCategoryAllRequest();
+    }
     /**
      * Create an instance of {@link ArrangmentAllResponse }
      * 
@@ -86,7 +170,39 @@ public class ObjectFactory {
         return new LocationResponse();
     }
     
-    
+
+
+    /**
+     * Create an instance of {@link ServiceByIdResponse }
+     * 
+     */
+    public ServiceByIdResponse createServiceByIdResponse() {
+        return new ServiceByIdResponse();
+    }
+
+    /**
+     * Create an instance of {@link ServiceAllResponse }
+     * 
+     */
+    public ServiceAllResponse createServiceAllResponse() {
+        return new ServiceAllResponse();
+    }
+    /**
+     * Create an instance of {@link ServiceAllRequest }
+     * 
+     */
+    public ServiceAllRequest createServiceAllRequest() {
+        return new ServiceAllRequest();
+    }
+
+    /**
+     * Create an instance of {@link ServiceByIdRequest }
+     * 
+     */
+    public ServiceByIdRequest createServiceByIdRequest() {
+        return new ServiceByIdRequest();
+    }
+
     /**
      * Create an instance of {@link ArrangmentAllRequest }
      * 
@@ -173,7 +289,6 @@ public class ObjectFactory {
     public MessageSaveResponse createMessageSaveResponse() {
         return new MessageSaveResponse();
     }
-
     /**
      * Create an instance of {@link MessageSaveRequest }
      * 
@@ -197,11 +312,39 @@ public class ObjectFactory {
         return new LocationByIdResponse();
     }
     /**
+     * Create an instance of {@link AccomodationSaveRequest }
+     * 
+     */
+    public AccomodationSaveRequest createAccomodationSaveRequest() {
+        return new AccomodationSaveRequest();
+    }
+    /**
+     * Create an instance of {@link ObjectTypeByIdRequest }
+     * 
+     */
+    public ObjectTypeByIdRequest createObjectTypeByIdRequest() {
+        return new ObjectTypeByIdRequest();
+    }
+    /**
+     * Create an instance of {@link ObjectTypeByIdResponse }
+     * 
+     */
+    public ObjectTypeByIdResponse createObjectTypeByIdResponse() {
+        return new ObjectTypeByIdResponse();
+    }
+    /**
      * Create an instance of {@link LocationByIdRequest }
      *
      */
     public LocationByIdRequest createLocationByIdRequest() {
         return new LocationByIdRequest();
+    }
+    /**
+     * Create an instance of {@link AccomodationSaveResponse }
+     * 
+     */
+    public AccomodationSaveResponse createAccomodationSaveResponse() {
+        return new AccomodationSaveResponse();
     }
     /**
      * Create an instance of {@link MessagesAllRequest }
@@ -429,5 +572,159 @@ public class ObjectFactory {
     public JAXBElement<ArrangmentUpdateResponse> createArrangmentUpdateResponse(ArrangmentUpdateResponse value) {
         return new JAXBElement<ArrangmentUpdateResponse>(_ArrangmentUpdateResponse_QNAME, ArrangmentUpdateResponse.class, null, value);
     }
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link AccomodationSaveRequest }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://webService.projekat.xml/", name = "accomodationSaveRequest")
+    public JAXBElement<AccomodationSaveRequest> createAccomodationSaveRequest(AccomodationSaveRequest value) {
+        return new JAXBElement<AccomodationSaveRequest>(_AccomodationSaveRequest_QNAME, AccomodationSaveRequest.class, null, value);
+    }
 
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link AccomodationSaveResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://webService.projekat.xml/", name = "accomodationSaveResponse")
+    public JAXBElement<AccomodationSaveResponse> createAccomodationSaveResponse(AccomodationSaveResponse value) {
+        return new JAXBElement<AccomodationSaveResponse>(_AccomodationSaveResponse_QNAME, AccomodationSaveResponse.class, null, value);
+    }
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ServiceAllRequest }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://webService.projekat.xml/", name = "serviceAllRequest")
+    public JAXBElement<ServiceAllRequest> createServiceAllRequest(ServiceAllRequest value) {
+        return new JAXBElement<ServiceAllRequest>(_ServiceAllRequest_QNAME, ServiceAllRequest.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ServiceAllResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://webService.projekat.xml/", name = "serviceAllResponse")
+    public JAXBElement<ServiceAllResponse> createServiceAllResponse(ServiceAllResponse value) {
+        return new JAXBElement<ServiceAllResponse>(_ServiceAllResponse_QNAME, ServiceAllResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ServiceByIdRequest }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://webService.projekat.xml/", name = "serviceByIdRequest")
+    public JAXBElement<ServiceByIdRequest> createServiceByIdRequest(ServiceByIdRequest value) {
+        return new JAXBElement<ServiceByIdRequest>(_ServiceByIdRequest_QNAME, ServiceByIdRequest.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ServiceByIdResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://webService.projekat.xml/", name = "serviceByIdResponse")
+    public JAXBElement<ServiceByIdResponse> createServiceByIdResponse(ServiceByIdResponse value) {
+        return new JAXBElement<ServiceByIdResponse>(_ServiceByIdResponse_QNAME, ServiceByIdResponse.class, null, value);
+    }
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ObjectCategoryAllRequest }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://webService.projekat.xml/", name = "objectCategoryAllRequest")
+    public JAXBElement<ObjectCategoryAllRequest> createObjectCategoryAllRequest(ObjectCategoryAllRequest value) {
+        return new JAXBElement<ObjectCategoryAllRequest>(_ObjectCategoryAllRequest_QNAME, ObjectCategoryAllRequest.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ObjectCategoryAllResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://webService.projekat.xml/", name = "objectCategoryAllResponse")
+    public JAXBElement<ObjectCategoryAllResponse> createObjectCategoryAllResponse(ObjectCategoryAllResponse value) {
+        return new JAXBElement<ObjectCategoryAllResponse>(_ObjectCategoryAllResponse_QNAME, ObjectCategoryAllResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ObjectTypeAllRequest }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://webService.projekat.xml/", name = "objectTypeAllRequest")
+    public JAXBElement<ObjectTypeAllRequest> createObjectTypeAllRequest(ObjectTypeAllRequest value) {
+        return new JAXBElement<ObjectTypeAllRequest>(_ObjectTypeAllRequest_QNAME, ObjectTypeAllRequest.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ObjectTypeAllResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://webService.projekat.xml/", name = "objectTypeAllResponse")
+    public JAXBElement<ObjectTypeAllResponse> createObjectTypeAllResponse(ObjectTypeAllResponse value) {
+        return new JAXBElement<ObjectTypeAllResponse>(_ObjectTypeAllResponse_QNAME, ObjectTypeAllResponse.class, null, value);
+    }
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ObjectTypeByIdRequest }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://webService.projekat.xml/", name = "objectTypeByIdRequest")
+    public JAXBElement<ObjectTypeByIdRequest> createObjectTypeByIdRequest(ObjectTypeByIdRequest value) {
+        return new JAXBElement<ObjectTypeByIdRequest>(_ObjectTypeByIdRequest_QNAME, ObjectTypeByIdRequest.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ObjectTypeByIdResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://webService.projekat.xml/", name = "objectTypeByIdResponse")
+    public JAXBElement<ObjectTypeByIdResponse> createObjectTypeByIdResponse(ObjectTypeByIdResponse value) {
+        return new JAXBElement<ObjectTypeByIdResponse>(_ObjectTypeByIdResponse_QNAME, ObjectTypeByIdResponse.class, null, value);
+    }
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ObjectCategoryByIdRequest }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://webService.projekat.xml/", name = "objectCategoryByIdRequest")
+    public JAXBElement<ObjectCategoryByIdRequest> createObjectCategoryByIdRequest(ObjectCategoryByIdRequest value) {
+        return new JAXBElement<ObjectCategoryByIdRequest>(_ObjectCategoryByIdRequest_QNAME, ObjectCategoryByIdRequest.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ObjectCategoryByIdResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://webService.projekat.xml/", name = "objectCategoryByIdResponse")
+    public JAXBElement<ObjectCategoryByIdResponse> createObjectCategoryByIdResponse(ObjectCategoryByIdResponse value) {
+        return new JAXBElement<ObjectCategoryByIdResponse>(_ObjectCategoryByIdResponse_QNAME, ObjectCategoryByIdResponse.class, null, value);
+    }
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link LocationSaveRequest }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://webService.projekat.xml/", name = "locationSaveRequest")
+    public JAXBElement<LocationSaveRequest> createLocationSaveRequest(LocationSaveRequest value) {
+        return new JAXBElement<LocationSaveRequest>(_LocationSaveRequest_QNAME, LocationSaveRequest.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link LocationSaveResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://webService.projekat.xml/", name = "locationSaveResponse")
+    public JAXBElement<LocationSaveResponse> createLocationSaveResponse(LocationSaveResponse value) {
+        return new JAXBElement<LocationSaveResponse>(_LocationSaveResponse_QNAME, LocationSaveResponse.class, null, value);
+    }
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link AccomodationFindRequest }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://webService.projekat.xml/", name = "accomodationFindRequest")
+    public JAXBElement<AccomodationFindRequest> createAccomodationFindRequest(AccomodationFindRequest value) {
+        return new JAXBElement<AccomodationFindRequest>(_AccomodationFindRequest_QNAME, AccomodationFindRequest.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link AccomodationFindResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://webService.projekat.xml/", name = "accomodationFindResponse")
+    public JAXBElement<AccomodationFindResponse> createAccomodationFindResponse(AccomodationFindResponse value) {
+        return new JAXBElement<AccomodationFindResponse>(_AccomodationFindResponse_QNAME, AccomodationFindResponse.class, null, value);
+    }
 }

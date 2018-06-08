@@ -16,7 +16,12 @@
 		
 		<label>Naziv: </label><input type="text" id="name"><br>
 		<label>Opis: </label><input type="text" id="description"><br>
-		<label>Tip: </label><select id="objectType"><option id="5">Kuca</option></select><br>
+		<label>Tip: </label><select id="objectType">
+		<c:forEach items="${types}" var="type">
+				<option id=${type.id }>${type.type }</option>
+			</c:forEach>
+		
+		</select><br>
 		<label>Kategorija: </label>
 		<select id="objectCategory">
 		<c:forEach items="${categories}" var="category">
@@ -37,9 +42,15 @@
 				<label>Ulica: </label><input type="text" id="address"><br>
 				<input type="button" value="Add address" id="addAddress"> 
 		</div> <br>
-		<label>Services:</label><select id="services"></select>
+		<label>Services:</label>
+		<select id="services">
+			<c:forEach items="${services}" var="service">
+				<option id=${service.id }>${service.service }</option>
+			</c:forEach>
+	
+		</select>
 		<input type="button" id="addService" value="Add service"><br>
-		<select id="myServices"><option id=2>Parking</option></select>
+		<select id="myServices"></select>
 		<div>
 		
 			<label>Plan cena:</label><br>

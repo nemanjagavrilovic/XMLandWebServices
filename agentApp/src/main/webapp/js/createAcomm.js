@@ -224,3 +224,7 @@ function setPictures(accomodationID){
 		}
 	})
 }
+$(document).on('click','#addService',function(e){
+	var item=$("#services option:selected")
+	$("#myServices").append("<option selected id=\'"+item.attr('id')+"'>"+item.text()+"</option>")
+})

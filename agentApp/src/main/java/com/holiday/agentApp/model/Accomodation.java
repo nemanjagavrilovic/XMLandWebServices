@@ -83,6 +83,10 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Entity
 public class Accomodation implements Serializable {
 	
+	public void setId(Long id) {
+		this.id = id;
+	}
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	protected Long id;

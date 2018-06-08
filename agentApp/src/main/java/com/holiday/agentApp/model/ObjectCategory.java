@@ -10,7 +10,6 @@ package com.holiday.agentApp.model;
 
 import java.io.Serializable;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -54,7 +53,7 @@ public class ObjectCategory implements Serializable{
 	 @XmlElement(name = "id", required = true)
 	protected Long id;
 
-	@XmlElement(name = "category", required = true)
+	@XmlElement(name = "Category", required = true)
     protected String category;
 
 	

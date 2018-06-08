@@ -5,6 +5,7 @@ import java.net.URL;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.xml.bind.JAXBElement;
 import javax.xml.namespace.QName;
 import javax.xml.ws.Service;
 
@@ -15,7 +16,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.holiday.agentApp.client.AccomodationClient;
 import com.holiday.agentApp.model.Accomodation;
+import com.holiday.agentApp.requestAndResponse.AccomodationFindResponse;
+import com.holiday.agentApp.requestAndResponse.AccomodationSaveResponse;
 import com.holiday.agentApp.service.AccomodationService;
 
 @Controller
@@ -25,6 +29,8 @@ public class AccomodationsController {
 	@Autowired
 	private AccomodationService accomodationService;
 	
+	@Autowired
+	private AccomodationClient accomodationClient;
 	@RequestMapping("/accomodation/{id}")
 	public String getAccomodation(@PathVariable ("id") Long id,HttpServletRequest request){
 		String address="http://localhost:9090/Service/AccomodationWebService";
@@ -54,20 +60,11 @@ public class AccomodationsController {
 	@RequestMapping("/publish/{id}")
 	public ResponseEntity<?> publish(@PathVariable("id") Long id){
 		
-			String address="http://localhost:9090/Service/SyncService";
-			QName serviceName = new QName("http://webService.agentApp.holiday.com/", "SyncService");
-	        QName portName = new QName("http://webService.agentApp.holiday.com/", "SyncServiceImplPort");
-
-	        Service service = null;
-			try {
-				service = Service.create(new URL(address+"?wsdl"), serviceName);
-			} catch (MalformedURLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-	         com.holiday.agentApp.webService.SyncService client = service.getPort(portName,  com.holiday.agentApp.webService.SyncService.class);
-	     Accomodation ac=accomodationService.findById(id);
-		 client.sync(ac);
+		Accomodation ac=accomodationService.findById(id);
+	//	ac.setId(null);
+	//	accomodationClient.save(ac);
+		JAXBElement<AccomodationFindResponse> saved=accomodationClient.find(ac);
+		System.out.println("Pronadjen ID"+saved.getValue().getAccomodation().getId());
 		 return new ResponseEntity<Accomodation>(ac,HttpStatus.OK);
 	}
 }

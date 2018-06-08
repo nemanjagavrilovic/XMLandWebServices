@@ -19,8 +19,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.holiday.agentApp.client.LocationClient;
-import com.holiday.agentApp.client.MessageClient;
 import com.holiday.agentApp.client.ObjectCategoryClient;
+import com.holiday.agentApp.client.ObjectTypeClient;
+import com.holiday.agentApp.client.ServiceClient;
 import com.holiday.agentApp.model.Accomodation;
 import com.holiday.agentApp.model.Location;
 import com.holiday.agentApp.model.ObjectCategory;
@@ -31,6 +32,10 @@ import com.holiday.agentApp.model.PriceShedule;
 import com.holiday.agentApp.model.Services;
 import com.holiday.agentApp.requestAndResponse.LocationByIdResponse;
 import com.holiday.agentApp.requestAndResponse.LocationResponse;
+import com.holiday.agentApp.requestAndResponse.ObjectCategoryAllResponse;
+import com.holiday.agentApp.requestAndResponse.ObjectTypeAllResponse;
+import com.holiday.agentApp.requestAndResponse.ObjectTypeByIdResponse;
+import com.holiday.agentApp.requestAndResponse.ServiceAllResponse;
 import com.holiday.agentApp.service.AccomodationService;
 import com.holiday.agentApp.service.LocationService;
 import com.holiday.agentApp.service.ObjectCategoryService;
@@ -48,30 +53,48 @@ public class CreateAccomodation {
 	private PriceService priceService;
 	@Autowired
 	private LocationService locationService;
+
+	@Autowired
+	private ObjectCategoryService objectCategoryService;
 	
 	@Autowired
-	private ServicesService servicesService;
+	private ObjectTypeService objectTypeService;
 	@Autowired
-	private ObjectTypeService objectTypeSerivce;
+	private ServicesService servicesService;
 	
 	@Autowired
 	private LocationClient locationClient;
-	@Autowired
-	private ObjectCategoryClient objectCategoryClient;
-	
 	
 	@Autowired
-	private ObjectCategoryService objectCategorySerivce;
+	private ObjectCategoryClient categoryClient;	
 	
+	@Autowired
+	private ObjectTypeClient objectTypeClient;
+	@Autowired
+	private ServiceClient serviceClient;
 	@RequestMapping(value="/")
 	public String createAccomodatinoPage(HttpServletRequest request){
 		JAXBElement<LocationResponse> object= (JAXBElement<LocationResponse>) locationClient.getAllLocations();
-		System.out.println(object.getValue().getLocations().size());
-	//	JAXBElement<com.holiday.agentApp.objectCategoryUsage.FindAllResponse> objectCategory= (JAXBElement<com.holiday.agentApp.objectCategoryUsage.FindAllResponse>) objectCategoryClient.findAll();
-	//.out.println(objectCategory.getValue().getObjectCategory().size());
-		
+		JAXBElement<ObjectCategoryAllResponse> objectCategory= (JAXBElement<ObjectCategoryAllResponse>) categoryClient.findAll();
+		JAXBElement<ObjectTypeAllResponse> objectTypes= (JAXBElement<ObjectTypeAllResponse>) objectTypeClient.findAll();
+		JAXBElement<ServiceAllResponse> services=serviceClient.findAll();
+	
+		for(ObjectCategory item:objectCategory.getValue().getObjectCategory()){
+			objectCategoryService.save(item);
+		}
+		for(ObjectType item:objectTypes.getValue().getObjectType()){
+			objectTypeService.save(item);
+		}
+		for(Location location:object.getValue().getLocations()){
+			locationService.save(location);
+		}
+		for(Services service:services.getValue().getServices()){
+			servicesService.save(service);
+		}
 		request.getSession().setAttribute("locations", object.getValue().getLocations());
-	//	request.getSession().setAttribute("categories", objectCategory.getValue().getObjectCategory());
+		request.getSession().setAttribute("categories", objectCategory.getValue().getObjectCategory());
+		request.getSession().setAttribute("types", objectTypes.getValue().getObjectType());
+		request.getSession().setAttribute("services", services.getValue().getServices());
 		
 		return "forward:/createAccomodation.jsp";
 	}
@@ -80,24 +103,29 @@ public class CreateAccomodation {
 			consumes = MediaType.APPLICATION_JSON_VALUE,
 			produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Location> createLocation(@RequestBody Location location){
-		locationService.save(location);
+		locationClient.save(location);
 		return new ResponseEntity<Location>(location,HttpStatus.OK);
 	}
 	
 	@RequestMapping(value="/getObjectType/{id}",method=RequestMethod.GET)
 	public ResponseEntity<ObjectType> getObjectType(@PathVariable ("id") Long id){
-		return new ResponseEntity<ObjectType>(objectTypeSerivce.getObjectType(id),HttpStatus.OK);
+		JAXBElement<ObjectTypeByIdResponse> response=objectTypeClient.findById(id);
+		System.out.println("Type id"+response.getValue().getObjectType().getId());
+		System.out.println("Type"+response.getValue().getObjectType().getType());
+		
+		return new ResponseEntity<ObjectType>(response.getValue().getObjectType(),HttpStatus.OK);
 	}
 	
 	@RequestMapping(value="/getObjectCategory/{id}",method=RequestMethod.GET)
 	public ResponseEntity<ObjectCategory> getObjectCategory(@PathVariable ("id") Long id){
-		ObjectCategory category=objectCategorySerivce.findById(id);
-		System.out.println("Kategorija"+category.getCategory());
+		ObjectCategory category=categoryClient.findById(id).getValue().getObjectCategory();
+		System.out.println("Kategorija id"+category.getId());
+		System.out.println("Kategorija :"+category.getCategory());
 		return new ResponseEntity<ObjectCategory>(category,HttpStatus.OK);
 	}
 	@RequestMapping(value="/getLocation/{id}",method=RequestMethod.GET)
 	public ResponseEntity<Location> getLocation(@PathVariable ("id") Long id){
-		JAXBElement<LocationByIdResponse> object= (JAXBElement<LocationByIdResponse>) locationClient.findByIdLocation();
+		JAXBElement<LocationByIdResponse> object= (JAXBElement<LocationByIdResponse>) locationClient.findByIdLocation(id);
 		System.out.println(object.getValue().getLocation().getCity());
 	
 		return new ResponseEntity<Location>(object.getValue().getLocation(),HttpStatus.OK);
@@ -125,7 +153,7 @@ public class CreateAccomodation {
 		System.out.println(servicesID);
 		List<Services> services=new ArrayList<Services>();
 		for(String item:servicesID){
-			services.add(servicesService.findByOne(Long.parseLong(item)));
+			services.add(serviceClient.findById(Long.parseLong(item.trim())).getValue().getService());
 		}
 		return new ResponseEntity<List<Services>>(services,HttpStatus.OK);	
 	}

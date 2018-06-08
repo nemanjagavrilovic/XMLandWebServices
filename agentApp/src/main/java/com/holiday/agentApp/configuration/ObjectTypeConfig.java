@@ -4,18 +4,18 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.oxm.jaxb.Jaxb2Marshaller;
 
-import com.holiday.agentApp.client.ObjectCategoryClient;
+import com.holiday.agentApp.client.ObjectTypeClient;
 
 @Configuration
-public class ObjectCategoryConfig {
-
+public class ObjectTypeConfig {
 
 	@Bean
-	public ObjectCategoryClient objectCategoryClient(Jaxb2Marshaller marshaller) {
-		ObjectCategoryClient client = new ObjectCategoryClient();
-		client.setDefaultUri("http://localhost:1111/Service/ObjectCategoryWebService");
+	public ObjectTypeClient objectTypeClient(Jaxb2Marshaller marshaller){
+		ObjectTypeClient client=new ObjectTypeClient();
+		client.setDefaultUri("http://localhost:1111/Service/ObjectTypeWebService");
 		client.setMarshaller(marshaller);
 		client.setUnmarshaller(marshaller);
+		
 		return client;
 	}
 }
