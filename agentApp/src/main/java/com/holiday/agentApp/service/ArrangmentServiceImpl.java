@@ -18,5 +18,20 @@ public class ArrangmentServiceImpl implements ArrangmentService{
 		// TODO Auto-generated method stub
 		return (List<Arrangment>) arrangmentRepository.findAll();
 	}
+	@Override
+	public Arrangment findOne(Long id) {
+		// TODO Auto-generated method stub
+		return arrangmentRepository.findOne(id);
+	}
+	@Override
+	public Arrangment save(Arrangment arrangment) {
+		// TODO Auto-generated method stub
+		return arrangmentRepository.save(arrangment);
+	}
+	@Override
+	public int update(boolean realized, Long id) {
+		// TODO Auto-generated method stub
+		return arrangmentRepository.update(realized, id);
+	}
 
 }

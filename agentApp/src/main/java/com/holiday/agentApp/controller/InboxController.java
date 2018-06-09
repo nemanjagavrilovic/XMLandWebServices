@@ -1,5 +1,6 @@
 package com.holiday.agentApp.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -17,12 +18,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.holiday.agentApp.client.InboxClient;
 import com.holiday.agentApp.client.MessageClient;
 import com.holiday.agentApp.client.UserClient;
+import com.holiday.agentApp.model.Inbox;
 import com.holiday.agentApp.model.Message;
 import com.holiday.agentApp.model.TUser;
 import com.holiday.agentApp.requestAndResponse.InboxByIdResponse;
 import com.holiday.agentApp.requestAndResponse.MessageByInboxResponse;
 import com.holiday.agentApp.requestAndResponse.MessageSaveResponse;
-import com.holiday.agentApp.requestAndResponse.MessagesAllResponse;
 
 @Controller
 @RequestMapping("/inbox")
@@ -42,7 +43,12 @@ public class InboxController {
 	public String inboxHome(HttpServletRequest request){
 		TUser user=userClient.userById(1L).getValue().getUser();
 		System.out.println("Korisnik: "+user.getEmail());
-		request.getSession().setAttribute("inboxes", inboxClient.findByReceiver(user).getValue().getInbox());
+		List<Inbox> inbox=  inboxClient.findByReceiver(user).getValue().getInbox();
+		if(inbox!=null){
+			request.getSession().setAttribute("inboxes",inbox);
+		}else{
+			request.getSession().setAttribute("inboxes", new ArrayList<Inbox>());
+		}
 
 		
 		return "forward:/inbox.jsp";

@@ -134,8 +134,15 @@ public class CreateAccomodation {
 			consumes = MediaType.APPLICATION_JSON_VALUE,
 			produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Price> addPrice(@RequestBody Price price){
-		priceService.save(price);
-		return new ResponseEntity<Price>(price,HttpStatus.OK);
+		Price saved=priceService.save(price);
+		return new ResponseEntity<Price>(saved,HttpStatus.OK);
+	}
+	@RequestMapping(value="/deletePrice/{id}",method=RequestMethod.DELETE,
+			consumes = MediaType.APPLICATION_JSON_VALUE,
+			produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<?> deletePrice(@PathVariable("id") Long id){
+		priceService.delete(id);
+		return new ResponseEntity<Long>(id,HttpStatus.OK);
 	}
 	
 	@RequestMapping(value="/getServices",method=RequestMethod.POST,

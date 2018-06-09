@@ -10,6 +10,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<a href="/createAccomodation">Create accomodation</a>
+	<a href="/createAccomodation/">Create accomodation</a>
+	<a href="/arrangments/">Arrangments</a>
+	<a href="/accomodations/all">Accomodations</a>
+	
 </body>
 </html>

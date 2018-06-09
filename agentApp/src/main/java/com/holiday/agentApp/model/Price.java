@@ -47,6 +47,10 @@ public class Price implements Serializable {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	protected Long id;
 
+	public Long getId() {
+		return id;
+	}
+
 	@XmlElement(required = true)
 	@XmlSchemaType(name = "date")
 

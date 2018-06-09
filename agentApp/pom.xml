@@ -123,7 +123,7 @@
        			 <generatePackage>xml.wsdl</generatePackage>
 			          <schemas>
 			            <schema>
-			                <url>http://localhost:1111/Service/AccomodationWebService?wsdl</url>
+			                <url>http://localhost:1111/Service/ArrangmentsWebService?wsdl</url>
 			            </schema>
 			        </schemas>
 			          </configuration>

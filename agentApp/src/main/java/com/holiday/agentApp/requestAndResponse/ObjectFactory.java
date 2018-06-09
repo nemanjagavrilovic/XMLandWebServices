@@ -79,6 +79,11 @@ public class ObjectFactory {
     private final static QName _AccomodationFindRequest_QNAME = new QName("http://webService.projekat.xml/", "accomodationFindRequest");
     private final static QName _AccomodationFindResponse_QNAME = new QName("http://webService.projekat.xml/", "accomodationFindResponse");
   
+    private final static QName _ArrangmentFindRequest_QNAME = new QName("http://webService.projekat.xml/", "arrangmentFindRequest");
+    private final static QName _ArrangmentFindResponse_QNAME = new QName("http://webService.projekat.xml/", "arrangmentFindResponse");
+    private final static QName _ArrangmentSaveRequest_QNAME = new QName("http://webService.projekat.xml/", "arrangmentSaveRequest");
+    private final static QName _ArrangmentSaveResponse_QNAME = new QName("http://webService.projekat.xml/", "arrangmentSaveResponse");
+   
     /**
      * Create an instance of {@link AccomodationFindResponse }
      * 
@@ -368,6 +373,36 @@ public class ObjectFactory {
      */
     public UserByIdResponse createUserByIdResponse() {
         return new UserByIdResponse();
+    }
+    /**
+     * Create an instance of {@link ArrangmentSaveResponse }
+     * 
+     */
+    public ArrangmentSaveResponse createArrangmentSaveResponse() {
+        return new ArrangmentSaveResponse();
+    }
+
+    /**
+     * Create an instance of {@link ArrangmentSaveRequest }
+     * 
+     */
+    public ArrangmentSaveRequest createArrangmentSaveRequest() {
+        return new ArrangmentSaveRequest();
+    }
+    /**
+     * Create an instance of {@link ArrangmentFindResponse }
+     * 
+     */
+    public ArrangmentFindResponse createArrangmentFindResponse() {
+        return new ArrangmentFindResponse();
+    }
+
+    /**
+     * Create an instance of {@link ArrangmentFindRequest }
+     * 
+     */
+    public ArrangmentFindRequest createArrangmentFindRequest() {
+        return new ArrangmentFindRequest();
     }
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link Long }{@code >}}
@@ -726,5 +761,40 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://webService.projekat.xml/", name = "accomodationFindResponse")
     public JAXBElement<AccomodationFindResponse> createAccomodationFindResponse(AccomodationFindResponse value) {
         return new JAXBElement<AccomodationFindResponse>(_AccomodationFindResponse_QNAME, AccomodationFindResponse.class, null, value);
+    }
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ArrangmentFindRequest }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://webService.projekat.xml/", name = "arrangmentFindRequest")
+    public JAXBElement<ArrangmentFindRequest> createArrangmentFindRequest(ArrangmentFindRequest value) {
+        return new JAXBElement<ArrangmentFindRequest>(_ArrangmentFindRequest_QNAME, ArrangmentFindRequest.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ArrangmentFindResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://webService.projekat.xml/", name = "arrangmentFindResponse")
+    public JAXBElement<ArrangmentFindResponse> createArrangmentFindResponse(ArrangmentFindResponse value) {
+        return new JAXBElement<ArrangmentFindResponse>(_ArrangmentFindResponse_QNAME, ArrangmentFindResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ArrangmentSaveRequest }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://webService.projekat.xml/", name = "arrangmentSaveRequest")
+    public JAXBElement<ArrangmentSaveRequest> createArrangmentSaveRequest(ArrangmentSaveRequest value) {
+        return new JAXBElement<ArrangmentSaveRequest>(_ArrangmentSaveRequest_QNAME, ArrangmentSaveRequest.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ArrangmentSaveResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://webService.projekat.xml/", name = "arrangmentSaveResponse")
+    public JAXBElement<ArrangmentSaveResponse> createArrangmentSaveResponse(ArrangmentSaveResponse value) {
+        return new JAXBElement<ArrangmentSaveResponse>(_ArrangmentSaveResponse_QNAME, ArrangmentSaveResponse.class, null, value);
     }
 }

@@ -6,8 +6,11 @@ var priceShedule;
 var prices=[];
 var urls=[]
 $(document).on('click',"#manualAddress",function(e){
-	 document.getElementById("addressDiv").style.display = "block";
-	  
+	if(document.getElementById("addressDiv").style.display=="block")
+	 document.getElementById("addressDiv").style.display = "none";
+	else
+		 document.getElementById("addressDiv").style.display = "block";
+	
 })
 $(document).on('click','#addAddress',function(e){
 	var country=$("#country").val()
@@ -51,7 +54,8 @@ $(document).on('click','#addPrice',function(e){
 		contentType:'application/json',
 		data:data,
 		success:function(data){
-			var row="<tr><td class='dateStart'>"+data.dateStart+"</td><td class='dateEnd'>"+data.dateEnd+"</td><td class='value'>"+data.value+"</td></tr>"
+			var row="<tr id=\'"+data.id+"\'><td class='dateStart'>"+convertDate(data.dateStart)+"</td><td class='dateEnd'>"+convertDate(data.dateEnd)+"</td><td class='value'>"+data.value+"</td>" +
+					"<td><a id='delete' href=\'../createAccomodation/deletePrice/"+data.id+"\'>Delete</a></td></tr>"
 			$("#priceSchedule").append(row)
 		}
 	})
@@ -226,5 +230,50 @@ function setPictures(accomodationID){
 }
 $(document).on('click','#addService',function(e){
 	var item=$("#services option:selected")
-	$("#myServices").append("<option selected id=\'"+item.attr('id')+"'>"+item.text()+"</option>")
+	$("#services option:selected").remove()
+		
+	for(i=0;i<item.length;i++){
+			$("#myServices").append("<option  id=\'"+item[i].id+"'>"+item[i].text+"</option>")
+	}
+})
+$(document).on('click','#removeService',function(e){
+	var item=$("#myServices option:selected")
+	$("#myServices option:selected").remove()
+	for(i=0;i<item.length;i++){
+		$("#services").append("<option  id=\'"+item[i].id+"'>"+item[i].text+"</option>")
+	}
+})
+function convertDate(date) {
+var d = new Date(date),
+        month = '' + (d.getMonth() + 1),
+        day = '' + d.getDate(),
+        year = d.getFullYear();
+
+if (month.length < 2)
+    month = '0' + month;
+if (day.length < 2)
+    day = '0' + day;
+var date = new Date();
+date.toLocaleDateString();
+
+return [day, month, year].join('-');
+}
+$(document).on('change','#dateStart',function(e){
+	var date =new Date($('#dateStart').val())
+	var now= date.toISOString().slice(0,10)
+	$('#dateEnd').prop('min', now);
+
+})
+$(document).on('click','#delete',function(e){
+	e.preventDefault();
+	url=$(this).attr('href')
+	id=url.substring(url.lastIndexOf('/')+1,url.length)
+	$("#"+id).remove();
+	$.ajax({
+		url:url,
+		type:'DELETE',
+		success:function(data){
+			
+		}
+	})
 })

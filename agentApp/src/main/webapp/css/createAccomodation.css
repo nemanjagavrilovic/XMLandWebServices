@@ -1,0 +1,28 @@
+.center {
+ 	position: absolute;
+    top: 90%;
+    left: 50%;
+    max-width:600px;
+    -moz-transform: translateX(-50%) translateY(-50%);
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
+}
+.services{
+	float:left;
+}
+.myServices{
+	width:100px;
+	padding:5px 5px; 
+}
+.clearBoth { clear:both; }
+
+.priceTable{
+	float:left;
+	max-height:230px;
+	overflow:auto;
+}
+.images{
+	height:100px;
+	width:100px;
+	overflow:auto;
+}

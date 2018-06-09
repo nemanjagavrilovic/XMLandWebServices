@@ -16,5 +16,10 @@ public class PriceServiceImpl implements PriceService{
 		// TODO Auto-generated method stub
 		return priceRepository.save(price);
 	}
+	@Override
+	public void delete(Long id) {
+		// TODO Auto-generated method stub
+		 priceRepository.delete(id);
+	}
 
 }
