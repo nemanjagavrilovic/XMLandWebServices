@@ -84,6 +84,12 @@ public class ObjectFactory {
     private final static QName _ArrangmentSaveRequest_QNAME = new QName("http://webService.projekat.xml/", "arrangmentSaveRequest");
     private final static QName _ArrangmentSaveResponse_QNAME = new QName("http://webService.projekat.xml/", "arrangmentSaveResponse");
    
+    private final static QName _AccomodationFindByOwnerRequest_QNAME = new QName("http://webService.projekat.xml/", "accomodationFindByOwnerRequest");
+    private final static QName _AccomodationFindByOwnerResponse_QNAME = new QName("http://webService.projekat.xml/", "accomodationFindByOwnerResponse");
+    
+    private final static QName _ArrangmentFindByAccOwnerRequest_QNAME = new QName("http://webService.projekat.xml/", "arrangmentFindByAccOwnerRequest");
+    private final static QName _ArrangmentFindByAccOwnerResponse_QNAME = new QName("http://webService.projekat.xml/", "arrangmentFindByAccOwnerResponse");
+   
     /**
      * Create an instance of {@link AccomodationFindResponse }
      * 
@@ -366,7 +372,20 @@ public class ObjectFactory {
     public UserByIdRequest createUserByIdRequest() {
         return new UserByIdRequest();
     }
-
+    /**
+     * Create an instance of {@link AccomodationFindByOwnerRequest }
+     * 
+     */
+    public AccomodationFindByOwnerRequest createAccomodationFindByOwnerRequest() {
+        return new AccomodationFindByOwnerRequest();
+    }
+    /**
+     * Create an instance of {@link AccomodationFindByOwnerResponse }
+     * 
+     */
+    public AccomodationFindByOwnerResponse createAccomodationFindByOwnerResponse() {
+        return new AccomodationFindByOwnerResponse();
+    }
     /**
      * Create an instance of {@link UserByIdResponse }
      * 
@@ -412,7 +431,20 @@ public class ObjectFactory {
     public JAXBElement<Long> createId(Long value) {
         return new JAXBElement<Long>(_Id_QNAME, Long.class, null, value);
     }
-
+    /**
+     * Create an instance of {@link ArrangmentFindByAccOwnerRequest }
+     * 
+     */
+    public ArrangmentFindByAccOwnerRequest createArrangmentFindByAccOwnerRequest() {
+        return new ArrangmentFindByAccOwnerRequest();
+    }
+    /**
+     * Create an instance of {@link ArrangmentFindByAccOwnerResponse }
+     * 
+     */
+    public ArrangmentFindByAccOwnerResponse createArrangmentFindByAccOwnerResponse() {
+        return new ArrangmentFindByAccOwnerResponse();
+    }
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link LocationRequest }{@code >}}
      * 
@@ -796,5 +828,39 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://webService.projekat.xml/", name = "arrangmentSaveResponse")
     public JAXBElement<ArrangmentSaveResponse> createArrangmentSaveResponse(ArrangmentSaveResponse value) {
         return new JAXBElement<ArrangmentSaveResponse>(_ArrangmentSaveResponse_QNAME, ArrangmentSaveResponse.class, null, value);
+    }
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link AccomodationFindByOwnerRequest }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://webService.projekat.xml/", name = "accomodationFindByOwnerRequest")
+    public JAXBElement<AccomodationFindByOwnerRequest> createAccomodationFindByOwnerRequest(AccomodationFindByOwnerRequest value) {
+        return new JAXBElement<AccomodationFindByOwnerRequest>(_AccomodationFindByOwnerRequest_QNAME, AccomodationFindByOwnerRequest.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link AccomodationFindByOwnerResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://webService.projekat.xml/", name = "accomodationFindByOwnerResponse")
+    public JAXBElement<AccomodationFindByOwnerResponse> createAccomodationFindByOwnerResponse(AccomodationFindByOwnerResponse value) {
+        return new JAXBElement<AccomodationFindByOwnerResponse>(_AccomodationFindByOwnerResponse_QNAME, AccomodationFindByOwnerResponse.class, null, value);
+    }
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ArrangmentFindByAccOwnerRequest }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://webService.projekat.xml/", name = "arrangmentFindByAccOwnerRequest")
+    public JAXBElement<ArrangmentFindByAccOwnerRequest> createArrangmentFindByAccOwnerRequest(ArrangmentFindByAccOwnerRequest value) {
+        return new JAXBElement<ArrangmentFindByAccOwnerRequest>(_ArrangmentFindByAccOwnerRequest_QNAME, ArrangmentFindByAccOwnerRequest.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ArrangmentFindByAccOwnerResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://webService.projekat.xml/", name = "arrangmentFindByAccOwnerResponse")
+    public JAXBElement<ArrangmentFindByAccOwnerResponse> createArrangmentFindByAccOwnerResponse(ArrangmentFindByAccOwnerResponse value) {
+        return new JAXBElement<ArrangmentFindByAccOwnerResponse>(_ArrangmentFindByAccOwnerResponse_QNAME, ArrangmentFindByAccOwnerResponse.class, null, value);
     }
 }

@@ -66,6 +66,10 @@ $(document).on('click',"#create",function(e){
 	getObjectCategory()
 	getLocation()
 	getServices()
+	if($("#name").val()==""){
+		alert("Morate uneti ime!")
+		return;
+	}
 	var accomodationID=0;
 	var accomodation=JSON.stringify({
 		"name":$("#name").val(),
@@ -196,7 +200,7 @@ function uploadImage() {
 		        mimeType: 'multipart/form-data',
 		        success: function(data) {
 		            image_url = JSON.parse(data).data.link;
-		            $("#images").append("<img src=\'"+image_url+"\'/>")
+		            $("#images").append("<img class='picture' src=\'"+image_url+"\'/>")
 		            var picture=JSON.stringify({
 		            	"url":image_url
 		            })

@@ -8,14 +8,15 @@
 <script type="text/javascript"	src="${pageContext.request.contextPath}/js/myAccom.js"> </script>
 	<script	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <link rel="stylesheet"	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/myAccomodations.css">
 	
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Accomodations</title>
 </head>
 <body>
-
+	<c:import url="_navbar.jsp"></c:import>
 	<div>
-		<table border="1" class="table table-hover">
+		<table border="1" class="accomTable">
 			<thead>
 				<tr>
 					<th>Ime</th>
@@ -26,11 +27,13 @@
 			</thead>
 			<tbody>
 				<c:forEach items="${accomodations}" var="accom">
-					<tr>
-						<td>${accom.name }</td>
-						<td>${accom.description }</td>
-						<td>${accom.maxPerson }</td>
-						<td><a href="../accomodations/accomodation/${accom.id}">View</a>
+					<tr >
+						<td height="10">${accom.name }</td>
+						<td height="10">${accom.description }</td>
+						<td height="10">${accom.maxPerson }</td>
+						<td height="10"><a href="../accomodations/accomodation/${accom.id}">View</a>
+						<td height="10"><a id="delete" href="../accomodations/delete/${accom.id}">Delete</a>
+					
 					</tr>
 	
 				</c:forEach>

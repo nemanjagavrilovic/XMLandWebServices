@@ -14,7 +14,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<a href="/accomodations/all">My accomodations</a>
+<c:import url="_navbar.jsp"></c:import>
 	<div class="center">
 		
 		<label>Naziv: </label><input type="text" class="form-control" id="name"><br>
@@ -38,12 +38,12 @@
 				<option id=${location.id }>${location.street },${location.city },${location.country}</option>
 			</c:forEach>
 		</select>
-		<input value="Dodaj adresu rucno" type="button" class="form-control" id="manualAddress"><br>
+		<input value="Dodaj adresu rucno" type="button" class="btn btn-primary" id="manualAddress"><br>
 		<div id="addressDiv"style="display:none">
 				<label>Drzava: </label><input class="form-control" type="text" id="country"><br>
 				<label>Grad: </label><input  class="form-control" type="text" id="city"><br>
 				<label>Ulica: </label><input class="form-control" type="text" id="address"><br>
-				<input type="button" value="Dodaj" id="addAddress"> 
+				<input type="button" class="btn btn-primary" value="Dodaj" id="addAddress"> 
 		</div> 
 			<div class="services">
 				
@@ -57,8 +57,8 @@
 				</select>
 				</div>
 				<div class="services">
-					<input type="button" id="addService" value="Dodaj">
-					<input type="button" id="removeService" value="Obrisi">
+					<input type="button" id="addService" class="btn btn-primary" value="Dodaj">
+					<input type="button" id="removeService" class="btn btn-danger" value="Obrisi">
 				</div>
 				<div class="services ">
 						<select id="myServices" class="myServices" multiple="multiple" size="5" class="form-control"></select>
@@ -84,17 +84,17 @@
 				<label>Pocetak primene:</label><input class="form-control" type="Date" id="dateStart"><br>
 				<label>Kraj primene:</label><input class="form-control"   type="Date" id="dateEnd"><br>
 				<label>Cena: </label><input class="form-control" type="text" id="price"><br>
-				<input type="button" value="Dodaj cenu" id="addPrice"> <br>
+				<input type="button" value="Dodaj cenu" class="btn btn-primary" id="addPrice"> <br>
 			</div>
 		</div>
 		
 			<br class="clearBoth">
 			<label>Slike: </label>
 			<input id="imageInput" accept="image/*" multiple type="file" placeholder="Image">
-    		<br> <input type="button" value="Aploaduj" onclick="uploadImage()">
+    		<br> <input type="button" value="Aploaduj" class="btn btn-primary" onclick="uploadImage()">
     		<div id="images"></div>
 	
-		<input type="button" value="Kreiraj smestaj" id="create">
+		<input type="button" class="btn btn-success" value="Kreiraj smestaj" id="create">
 	</div>
 </body>
 </html>

@@ -16,9 +16,10 @@
 <title>Accomodations</title>
 </head>
 <body>
-
-	<div>
-		<table border="1">
+	<c:import url="_navbar.jsp"></c:import>
+	<div class="topPart">
+		<div>
+		<table border="1" class="accomTable">
 			<tbody>
 					<tr>
 						<td>Ime:</td>
@@ -32,12 +33,24 @@
 						<td>Kapacitet:</td>
 						<td >${accom.maxPerson }</td>
 					</tr>
-					<tr colspan=2>
+					<tr>
+						<td>Lokacija:</td>
+						<td>${accom.location.street },${accom.location.city },${accom.location.country } </td>
+					</tr>
+					<tr>
+						<td>Kategorija:</td>
+						<td>${accom.category.category }</td>
+					</tr>
+					<tr>
+						<td>Tip:</td>
+						<td>${accom.type.type }</td>
+					</tr>
+					<tr >
 						<td><a id="publish" href="../publish/${accom.id }">Publish</a></td>
-					</tr>
-					<tr colspan=2>
 						<td><a id="reserve" >Reserve</a></td>
+				
 					</tr>
+				
 			</tbody>
 		</table>
 		<div  class="container">
@@ -58,7 +71,18 @@
 			</c:forEach>
 			</div>
 		</div>
-
+		</div>
+		<div class="comments">
+			<c:forEach items="${accom.comment }" var="comment">
+				<div class="panel panel-primary" style="width:400px;height:100px;overflow:auto;top:100px;">
+					<div class="panel-heading">${comment.author.name} ${comment.author.surname}</div>
+					<div class="panel-body" style="max-width:500px;overflow:auto">${comment.content }</div>
+				</div>
+		
+			</c:forEach>
+	
+		</div>
+	
 	</div>
 	<div class="modal fade" id="reservationModal" tabindex="-1" role="dialog">
 		  <div class="modal-dialog" role="document">

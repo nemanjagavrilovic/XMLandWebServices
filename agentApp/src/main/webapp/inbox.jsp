@@ -7,11 +7,14 @@
 <script type="text/javascript"	src="${pageContext.request.contextPath}/js/jquery.min.js"> </script>
 <script type="text/javascript"	src="${pageContext.request.contextPath}/js/inbox.js"> </script>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/inbox.css">
+	<script	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet"	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
 </head>
 <body>
+<c:import url="_navbar.jsp"></c:import>
 	<div class="inboxes">
 			<c:forEach items="${inboxes}" var="inbox">
 			

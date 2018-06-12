@@ -1,7 +1,7 @@
 body{
 	 font-family: Arial;
   margin: 0;
-  
+display:inline;  
 }
 * {
   box-sizing: border-box;
@@ -12,6 +12,8 @@ body{
   position: relative;
   width:300px;
   float:left;
+  left:600px;
+  top:-450px;
 }
 
 /* Hide the images by default */
@@ -99,4 +101,31 @@ body{
 .image{
 	width:300px;
 	height:300px;
+}
+.accomTable{
+	width:300px;
+	height:500px;
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+   
+	
+}
+.comments{
+	width:300px;
+	height:500px;
+	left:-300px;
+	float:left;
+}
+.accomTable td, .accomTable th {
+    border: 1px solid #ddd;
+    padding: 8px;
+   
+}
+.accomTable tr:nth-child(even){background-color: #8080ff; color:white;}
+.accomTable tr:nth-child(odd){background-color: #4242ff; color:white;}
+a{
+	color:white;
+}
+a:hover{
+	color:red;
 }

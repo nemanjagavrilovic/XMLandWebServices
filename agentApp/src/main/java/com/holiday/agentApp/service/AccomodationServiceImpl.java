@@ -34,6 +34,17 @@ public class AccomodationServiceImpl implements AccomodationService{
 		// TODO Auto-generated method stub
 		return  (List<Accomodation>) accomodationRepository.findAll();
 	}
+	@Override
+	public void delete(Long id) {
+		// TODO Auto-generated method stub
+		 accomodationRepository.delete(id);
+	}
+	@Override
+	public Accomodation find(Accomodation accomodation) {
+		// TODO Auto-generated method stub
+		return accomodationRepository.findByLocationAndMaxPersonAndCategoryAndTypeAndOwnerAndNameAndDescription(accomodation.getLocation(),
+				accomodation.getMaxPerson(), accomodation.getCategory(), accomodation.getType(),accomodation.getOwner(), accomodation.getName(), accomodation.getDescription());
+	}
 
 	
 }

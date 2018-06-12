@@ -1,0 +1,18 @@
+.accomTable{
+	width:100%;
+	height:100%;
+}
+
+.accomTable td, .accomTable th {
+    border: 1px solid #ddd;
+    padding: 8px;
+   
+}
+.accomTable tr:nth-child(even){background-color: #8080ff; color:white;}
+.accomTable tr:nth-child(odd){background-color: #4242ff; color:white;}
+a{
+	color:white;
+}
+a:hover{
+	color:red;
+}

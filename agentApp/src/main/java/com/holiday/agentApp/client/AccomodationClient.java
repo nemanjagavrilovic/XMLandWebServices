@@ -6,6 +6,9 @@ import org.springframework.ws.client.core.support.WebServiceGatewaySupport;
 import org.springframework.ws.soap.client.core.SoapActionCallback;
 
 import com.holiday.agentApp.model.Accomodation;
+import com.holiday.agentApp.model.TUser;
+import com.holiday.agentApp.requestAndResponse.AccomodationFindByOwnerRequest;
+import com.holiday.agentApp.requestAndResponse.AccomodationFindByOwnerResponse;
 import com.holiday.agentApp.requestAndResponse.AccomodationFindRequest;
 import com.holiday.agentApp.requestAndResponse.AccomodationFindResponse;
 import com.holiday.agentApp.requestAndResponse.AccomodationSaveRequest;
@@ -44,4 +47,15 @@ public class AccomodationClient extends WebServiceGatewaySupport{
 
 	}
 
+	public JAXBElement<AccomodationFindByOwnerResponse> findByOwner(TUser user){
+		AccomodationFindByOwnerRequest request = new AccomodationFindByOwnerRequest();
+		request.setOwner(user);
+		@SuppressWarnings("unchecked")
+		JAXBElement<AccomodationFindByOwnerResponse> response = (JAXBElement<AccomodationFindByOwnerResponse>) getWebServiceTemplate()
+				.marshalSendAndReceive("http://localhost:1111/Service/AccomodationWebService?wsdl", request,
+						new SoapActionCallback("http://webService.projekat.xml/findByOwner"));
+
+		return response;
+
+	}
 }

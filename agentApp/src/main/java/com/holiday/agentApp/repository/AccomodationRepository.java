@@ -7,7 +7,11 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.holiday.agentApp.model.Accomodation;
+import com.holiday.agentApp.model.Location;
+import com.holiday.agentApp.model.ObjectCategory;
+import com.holiday.agentApp.model.ObjectType;
 import com.holiday.agentApp.model.PriceShedule;
+import com.holiday.agentApp.model.TUser;
 
 @Repository
 public interface AccomodationRepository extends PagingAndSortingRepository<Accomodation,Long>{
@@ -17,7 +21,9 @@ public interface AccomodationRepository extends PagingAndSortingRepository<Accom
 	@Query("Update Accomodation a set a.priceShedule=?1 where a.id=?2")
 	public void update(PriceShedule priceShedule,Long id);
 	
-	
+	Accomodation findByLocationAndMaxPersonAndCategoryAndTypeAndOwnerAndNameAndDescription(
+			 Location location,int maxPerson,ObjectCategory category,ObjectType type,TUser owner,String name
+			 ,String description);
 	
 }
 

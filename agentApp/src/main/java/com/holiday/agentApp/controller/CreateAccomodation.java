@@ -74,27 +74,12 @@ public class CreateAccomodation {
 	private ServiceClient serviceClient;
 	@RequestMapping(value="/")
 	public String createAccomodatinoPage(HttpServletRequest request){
-		JAXBElement<LocationResponse> object= (JAXBElement<LocationResponse>) locationClient.getAllLocations();
-		JAXBElement<ObjectCategoryAllResponse> objectCategory= (JAXBElement<ObjectCategoryAllResponse>) categoryClient.findAll();
-		JAXBElement<ObjectTypeAllResponse> objectTypes= (JAXBElement<ObjectTypeAllResponse>) objectTypeClient.findAll();
-		JAXBElement<ServiceAllResponse> services=serviceClient.findAll();
 	
-		for(ObjectCategory item:objectCategory.getValue().getObjectCategory()){
-			objectCategoryService.save(item);
-		}
-		for(ObjectType item:objectTypes.getValue().getObjectType()){
-			objectTypeService.save(item);
-		}
-		for(Location location:object.getValue().getLocations()){
-			locationService.save(location);
-		}
-		for(Services service:services.getValue().getServices()){
-			servicesService.save(service);
-		}
-		request.getSession().setAttribute("locations", object.getValue().getLocations());
-		request.getSession().setAttribute("categories", objectCategory.getValue().getObjectCategory());
-		request.getSession().setAttribute("types", objectTypes.getValue().getObjectType());
-		request.getSession().setAttribute("services", services.getValue().getServices());
+		
+		request.getSession().setAttribute("locations", locationService.findAll());
+		request.getSession().setAttribute("categories", objectCategoryService.findAll());
+		request.getSession().setAttribute("types", objectTypeService.findAll());
+		request.getSession().setAttribute("services", servicesService.findAll());
 		
 		return "forward:/createAccomodation.jsp";
 	}

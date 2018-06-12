@@ -1,6 +1,6 @@
 .center {
  	position: absolute;
-    top: 90%;
+    top: 100%;
     left: 50%;
     max-width:600px;
     -moz-transform: translateX(-50%) translateY(-50%);
@@ -21,8 +21,12 @@
 	max-height:230px;
 	overflow:auto;
 }
-.images{
+#images{
 	height:100px;
-	width:100px;
+	width:300px;
 	overflow:auto;
+}
+.picture{
+	height:70px;
+	width:70px;
 }

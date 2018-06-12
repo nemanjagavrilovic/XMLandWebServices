@@ -1,5 +1,7 @@
 package com.holiday.agentApp.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,6 +22,11 @@ public class ObjectCategoryServiceImpl implements ObjectCategoryService {
 	public ObjectCategory save(ObjectCategory category) {
 		// TODO Auto-generated method stub
 		return objectCategoryRepository.save(category);
+	}
+	@Override
+	public List<ObjectCategory> findAll() {
+		// TODO Auto-generated method stub
+		return (List<ObjectCategory>) objectCategoryRepository.findAll();
 	}
 
 }

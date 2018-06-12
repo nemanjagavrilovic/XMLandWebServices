@@ -11,4 +11,6 @@ public interface AccomodationService {
 	public Accomodation findById(Long id);
 	public void update(PriceShedule priceShedule,Long id);
 	public List<Accomodation> findAll();
+	public void delete(Long id);
+	public Accomodation find(Accomodation accomodation);
 }

@@ -1,5 +1,7 @@
 package com.holiday.agentApp.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,6 +24,12 @@ public class LocationServiceImpl implements LocationService{
 	public Location findById(Long id) {
 		// TODO Auto-generated method stub
 		return locationRepository.findOne(id);
+	}
+
+	@Override
+	public List<Location> findAll() {
+		// TODO Auto-generated method stub
+		return (List<Location>) locationRepository.findAll();
 	}
 
 }

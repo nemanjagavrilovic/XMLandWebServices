@@ -1,0 +1,18 @@
+.arrangTable{
+	width:100%;
+	height:100%;
+}
+
+.arrangTable td, .arrangTable th {
+    border: 1px solid #ddd;
+    padding: 8px;
+   
+}
+.arrangTable tr:nth-child(even){background-color: #8080ff; color:white;}
+.arrangTable tr:nth-child(odd){background-color: #4242ff; color:white;}
+a{
+	color:white;
+}
+a:hover{
+	color:red;
+}

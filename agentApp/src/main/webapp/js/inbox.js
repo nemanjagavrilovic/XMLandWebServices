@@ -12,9 +12,9 @@ $(document).on('click','#link',function(e){
 			})
 			$('.sending').empty()
 			$('.sending').append(
-					"<br><br><br><div class=\"bottomOfMessage\">" +
-					"<input type=\'text\' id=\'content\'>" +
-					'<input type="button" value="Send" onClick="sendMessage(\'' + inboxId + '\')"/></div>')
+					"<div class=\"bottomOfMessage\">" +
+					"<input type=\'text\' class=\'sendText \' id=\'content\'>" +
+					'<input type="button" value="Send" class=\'btn btn-primary\' onClick="sendMessage(\'' + inboxId + '\')"/></div>')
 		}
 	})
 })

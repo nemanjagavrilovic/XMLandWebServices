@@ -1,5 +1,7 @@
 package com.holiday.agentApp.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,6 +22,11 @@ public class ServicesServiceImpl implements ServicesService{
 	public Services save(Services service) {
 		// TODO Auto-generated method stub
 		return servicesRepository.save(service);
+	}
+	@Override
+	public List<Services> findAll() {
+		// TODO Auto-generated method stub
+		return (List<Services>) servicesRepository.findAll();
 	}
 
 }

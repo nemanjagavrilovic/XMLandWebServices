@@ -15,12 +15,17 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.holiday.agentApp.client.AccomodationClient;
 import com.holiday.agentApp.client.ArrangmentClient;
 import com.holiday.agentApp.model.Accomodation;
+import com.holiday.agentApp.model.Agent;
 import com.holiday.agentApp.model.Arrangment;
+import com.holiday.agentApp.requestAndResponse.AccomodationFindByOwnerResponse;
 import com.holiday.agentApp.requestAndResponse.AccomodationFindResponse;
+import com.holiday.agentApp.requestAndResponse.ArrangmentFindByAccOwnerResponse;
 import com.holiday.agentApp.requestAndResponse.ArrangmentFindResponse;
 import com.holiday.agentApp.requestAndResponse.ArrangmentUpdateResponse;
 import com.holiday.agentApp.service.AccomodationService;
 import com.holiday.agentApp.service.ArrangmentService;
+import com.holiday.agentApp.service.LocationService;
+import com.holiday.agentApp.service.UserService;
 
 @Controller
 @RequestMapping("/arrangments")
@@ -36,11 +41,12 @@ public class ArrangmentsController {
 	private ArrangmentService arrangmentService;
 	@Autowired
 	private AccomodationService accomodationService;
+	
 	@RequestMapping(value="/",method=RequestMethod.GET)
 	public String arrangmentsPage(HttpServletRequest request){
 		
 		
-		request.getSession().setAttribute("arrangments", arrangmentService.findAll());
+		request.getSession().setAttribute("arrangments",arrangmentService.findAll() );
 		return "forward:/arrangments.jsp";
 	}
 	

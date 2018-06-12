@@ -8,6 +8,8 @@ import org.springframework.ws.soap.client.core.SoapActionCallback;
 import com.holiday.agentApp.model.Arrangment;
 import com.holiday.agentApp.requestAndResponse.ArrangmentAllRequest;
 import com.holiday.agentApp.requestAndResponse.ArrangmentAllResponse;
+import com.holiday.agentApp.requestAndResponse.ArrangmentFindByAccOwnerRequest;
+import com.holiday.agentApp.requestAndResponse.ArrangmentFindByAccOwnerResponse;
 import com.holiday.agentApp.requestAndResponse.ArrangmentFindRequest;
 import com.holiday.agentApp.requestAndResponse.ArrangmentFindResponse;
 import com.holiday.agentApp.requestAndResponse.ArrangmentSaveRequest;
@@ -64,4 +66,15 @@ public class ArrangmentClient extends WebServiceGatewaySupport {
 
 	}
 	
+	public JAXBElement<ArrangmentFindByAccOwnerResponse> findByAccOwner(Long id){
+		ArrangmentFindByAccOwnerRequest request = new ArrangmentFindByAccOwnerRequest();
+		request.setId(id);
+		@SuppressWarnings("unchecked")
+		JAXBElement<ArrangmentFindByAccOwnerResponse> response = (JAXBElement<ArrangmentFindByAccOwnerResponse>) getWebServiceTemplate()
+				.marshalSendAndReceive("http://localhost:1111/Service/ArrangmentsWebService?wsdl", request,
+						new SoapActionCallback("http://webService.projekat.xml/findByAccOwner"));
+
+		return response;
+
+	}
 }

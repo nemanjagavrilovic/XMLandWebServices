@@ -8,6 +8,9 @@ $(document).on('click','#publish',function(e){
 			type:'POST',
 			success:function(data){
 				alert('Uspesno objavljeno')
+			},
+			error:function(data){
+				alert('Vec je objavljen smestaj.')
 			}
 		})
 	}
