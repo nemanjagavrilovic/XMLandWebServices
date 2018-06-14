@@ -93,11 +93,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Raiting }
+     * Create an instance of {@link Rating }
      * 
      */
-    public Raiting createRaiting() {
-        return new Raiting();
+    public Rating createRaiting() {
+        return new Rating();
     }
 
     /**

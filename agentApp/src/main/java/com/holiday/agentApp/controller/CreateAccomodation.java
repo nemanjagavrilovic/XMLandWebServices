@@ -31,15 +31,12 @@ import com.holiday.agentApp.model.Price;
 import com.holiday.agentApp.model.PriceShedule;
 import com.holiday.agentApp.model.Services;
 import com.holiday.agentApp.requestAndResponse.LocationByIdResponse;
-import com.holiday.agentApp.requestAndResponse.LocationResponse;
-import com.holiday.agentApp.requestAndResponse.ObjectCategoryAllResponse;
-import com.holiday.agentApp.requestAndResponse.ObjectTypeAllResponse;
 import com.holiday.agentApp.requestAndResponse.ObjectTypeByIdResponse;
-import com.holiday.agentApp.requestAndResponse.ServiceAllResponse;
 import com.holiday.agentApp.service.AccomodationService;
 import com.holiday.agentApp.service.LocationService;
 import com.holiday.agentApp.service.ObjectCategoryService;
 import com.holiday.agentApp.service.ObjectTypeService;
+import com.holiday.agentApp.service.PriceScheduleService;
 import com.holiday.agentApp.service.PriceService;
 import com.holiday.agentApp.service.ServicesService;
 
@@ -72,6 +69,9 @@ public class CreateAccomodation {
 	private ObjectTypeClient objectTypeClient;
 	@Autowired
 	private ServiceClient serviceClient;
+	
+	@Autowired
+	private PriceScheduleService priceSheduleService;
 	@RequestMapping(value="/")
 	public String createAccomodatinoPage(HttpServletRequest request){
 	
@@ -115,20 +115,8 @@ public class CreateAccomodation {
 	
 		return new ResponseEntity<Location>(object.getValue().getLocation(),HttpStatus.OK);
 	}
-	@RequestMapping(value="/addPrice",method=RequestMethod.POST,
-			consumes = MediaType.APPLICATION_JSON_VALUE,
-			produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<Price> addPrice(@RequestBody Price price){
-		Price saved=priceService.save(price);
-		return new ResponseEntity<Price>(saved,HttpStatus.OK);
-	}
-	@RequestMapping(value="/deletePrice/{id}",method=RequestMethod.DELETE,
-			consumes = MediaType.APPLICATION_JSON_VALUE,
-			produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<?> deletePrice(@PathVariable("id") Long id){
-		priceService.delete(id);
-		return new ResponseEntity<Long>(id,HttpStatus.OK);
-	}
+
+	
 	
 	@RequestMapping(value="/getServices",method=RequestMethod.POST,
 			consumes = MediaType.APPLICATION_JSON_VALUE)
@@ -169,10 +157,16 @@ public class CreateAccomodation {
 		}
 		Accomodation accomodation=accomodationService.findById(id);
 		
+		PriceShedule saved=priceSheduleService.save(schedule);
+		
 		for(Price item:prices){
-			schedule.getPrice().add(item);
+			item.setPriceShedule(saved);
+			saved.getPrice().add(item);
+			priceService.save(item);
+			
 		}
-		accomodation.setPriceShedule(schedule);
+		PriceShedule saved1=priceSheduleService.save(schedule);
+		accomodation.setPriceShedule(saved1);
 		accomodationService.update(schedule,accomodation.getId());
 		
 		return new ResponseEntity<Accomodation>(accomodation,HttpStatus.OK);

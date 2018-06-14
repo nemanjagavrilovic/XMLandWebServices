@@ -75,7 +75,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
     "maxPerson",
     "comment",
     "location",
-    "raiting",
+    "rating",
     "services",
     "priceShedule"
 })
@@ -108,7 +108,7 @@ public class Accomodation implements Serializable {
     @XmlElement(name = "Category", required = true)
     protected ObjectCategory category;
     
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
     @XmlElement(name = "Picture", required = false)
     
     protected List<Picture> picture;
@@ -125,14 +125,14 @@ public class Accomodation implements Serializable {
     protected Location location;
     
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @XmlElement(name = "Raiting")
-    protected List<Raiting> raiting;
+    @XmlElement(name = "Rating")
+    protected List<Rating> rating;
     
     @ManyToMany(cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
     @XmlElement(name = "Services")
     protected List<Services> services;
     
-    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @XmlElement(name = "Price_shedule", required = true)
     protected PriceShedule priceShedule;
 
@@ -378,15 +378,15 @@ public class Accomodation implements Serializable {
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link Raiting }
+     * {@link Rating }
      * 
      * 
      */
-    public List<Raiting> getRaiting() {
-        if (raiting == null) {
-            raiting = new ArrayList<Raiting>();
+    public List<Rating> getRating() {
+        if (rating == null) {
+        	rating = new ArrayList<Rating>();
         }
-        return this.raiting;
+        return this.rating;
     }
 
     /**

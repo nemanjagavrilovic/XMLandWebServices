@@ -23,7 +23,7 @@ import com.holiday.agentApp.model.Comment;
 import com.holiday.agentApp.model.Location;
 import com.holiday.agentApp.model.Picture;
 import com.holiday.agentApp.model.PriceShedule;
-import com.holiday.agentApp.model.Raiting;
+import com.holiday.agentApp.model.Rating;
 
 
 /**

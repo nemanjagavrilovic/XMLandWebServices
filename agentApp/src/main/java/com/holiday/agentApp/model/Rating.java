@@ -46,12 +46,12 @@ import javax.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {"id",
     "accomodation",
-    "content",
+    "rating",
     "owner"
 })
-@XmlRootElement(name = "Raiting")
+@XmlRootElement(name = "Rating")
 @Entity
-public class Raiting implements Serializable{
+public class Rating implements Serializable{
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -60,13 +60,16 @@ public class Raiting implements Serializable{
     @XmlElement(name = "Accomodation", required = true)
     @ManyToOne
     protected Accomodation accomodation;
-    @XmlElement(required = true)
-    protected String content;
+    public Long getId() {
+		return id;
+	}
+
+	@XmlElement(required = true)
+    protected int rating;
     @ManyToOne
     @XmlElement(name = "Owner", required = true)
-    protected User owner;
+    protected TUser owner;
 
-    public Raiting(){}
     /**
      * Gets the value of the accomodation property.
      * 
@@ -99,8 +102,8 @@ public class Raiting implements Serializable{
      *     {@link String }
      *     
      */
-    public String getContent() {
-        return content;
+    public int getRating() {
+        return rating;
     }
 
     /**
@@ -111,8 +114,8 @@ public class Raiting implements Serializable{
      *     {@link String }
      *     
      */
-    public void setContent(String value) {
-        this.content = value;
+    public void setRating(int value) {
+        this.rating = value;
     }
 
     /**
@@ -123,7 +126,7 @@ public class Raiting implements Serializable{
      *     {@link User }
      *     
      */
-    public User getOwner() {
+    public TUser getOwner() {
         return owner;
     }
 

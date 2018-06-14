@@ -41,24 +41,18 @@ $(document).on('click','#addPrice',function(e){
 	var endDate=$("#dateEnd").val()
 	var price=$("#price").val()
 	
+			var row="<tr ><td class='dateStart'>"+startDate+"</td><td class='dateEnd'>"+endDate+"</td><td class='value'>"+price+"</td>" +
+					"<td><a id='delete' >Delete</a></td></tr>"
+			$("#priceSchedule").append(row)
+	
+	
+	
 	var data=JSON.stringify({
 		"dateStart":startDate,
 		"dateEnd":endDate,
 		"value":price
 	})
 	
-	$.ajax({
-		type:'POST',
-		url:'../createAccomodation/addPrice',
-		dataType:'json',
-		contentType:'application/json',
-		data:data,
-		success:function(data){
-			var row="<tr id=\'"+data.id+"\'><td class='dateStart'>"+convertDate(data.dateStart)+"</td><td class='dateEnd'>"+convertDate(data.dateEnd)+"</td><td class='value'>"+data.value+"</td>" +
-					"<td><a id='delete' href=\'../createAccomodation/deletePrice/"+data.id+"\'>Delete</a></td></tr>"
-			$("#priceSchedule").append(row)
-		}
-	})
 	
 })
 $(document).on('click',"#create",function(e){
@@ -98,6 +92,7 @@ $(document).on('click',"#create",function(e){
 		type:'POST',
 		contentType:'application/json',
 		dataType:'json',
+		async:false,
 		data:JSON.stringify({
 			"price":prices
 		}),
@@ -268,16 +263,9 @@ $(document).on('change','#dateStart',function(e){
 	$('#dateEnd').prop('min', now);
 
 })
+
+
 $(document).on('click','#delete',function(e){
 	e.preventDefault();
-	url=$(this).attr('href')
-	id=url.substring(url.lastIndexOf('/')+1,url.length)
-	$("#"+id).remove();
-	$.ajax({
-		url:url,
-		type:'DELETE',
-		success:function(data){
-			
-		}
-	})
+	$(this).parent().parent().remove()
 })

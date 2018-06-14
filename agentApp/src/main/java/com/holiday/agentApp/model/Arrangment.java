@@ -8,7 +8,6 @@
 
 package com.holiday.agentApp.model;
 
-
 import java.util.Date;
 
 import javax.persistence.Entity;
@@ -57,7 +56,8 @@ import javax.xml.datatype.XMLGregorianCalendar;
     "accomodation",
     "numberOfPeople",
     "owner",
-    "realized"
+    "realized",
+    "rating"
 })
 @XmlRootElement(name = "Arrangment", namespace = "")
 @Entity
@@ -68,15 +68,7 @@ public class Arrangment {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	protected Long id;
 	
-    public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	@XmlElement(namespace = "", required = true)
+    @XmlElement(namespace = "", required = true)
     @XmlSchemaType(name = "date")
     protected Date dateStart;
     @XmlElement(namespace = "", required = true)
@@ -85,7 +77,28 @@ public class Arrangment {
     @XmlElement(name = "Accomodation", required = true)
     @OneToOne
     protected Accomodation accomodation;
-    @XmlElement(namespace = "")
+    
+    @XmlElement(name = "Rating", required = true)
+    @OneToOne
+    protected Rating rating;
+   
+    public Rating getRating() {
+		return rating;
+	}
+
+	public void setRating(Rating rating) {
+		this.rating = rating;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	@XmlElement(namespace = "")
     protected int numberOfPeople;
     @XmlElement(name = "Owner", namespace = "", required = true)
     @OneToOne

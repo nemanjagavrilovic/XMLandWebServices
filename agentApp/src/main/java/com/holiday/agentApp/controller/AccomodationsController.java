@@ -48,13 +48,12 @@ public class AccomodationsController {
 	public ResponseEntity<?> publish(@PathVariable("id") Long id){
 		
 		Accomodation ac=accomodationService.findById(id);
+		System.out.println(ac.getPriceShedule().getPrice().size());
 		JAXBElement<AccomodationFindResponse> saved=accomodationClient.find(ac);
-		System.out.println("Pronadjen ID"+saved.getValue().getAccomodation().getId());
 		if(saved.getValue().getAccomodation()!=null){
 			 return new ResponseEntity<Accomodation>(ac,HttpStatus.BAD_REQUEST);
 
 		}else{
-				ac.setId(null);
 				accomodationClient.save(ac);
 			return new ResponseEntity<Accomodation>(ac,HttpStatus.OK);
 		}
