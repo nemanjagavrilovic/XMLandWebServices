@@ -48,6 +48,10 @@ import javax.xml.bind.annotation.XmlType;
 @Entity
 public class ObjectCategory implements Serializable{
 
+	public void setId(Long id) {
+		this.id = id;
+	}
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	 @XmlElement(name = "id", required = true)

@@ -15,6 +15,10 @@
 </head>
 <body>
 <c:import url="_navbar.jsp"></c:import>
+<c:if test="${ empty user}">
+		<c:redirect url="/index.jsp"></c:redirect>
+	</c:if>
+	
 	<div class="center">
 		
 		<label>Naziv: </label><input type="text" class="form-control" id="name"><br>

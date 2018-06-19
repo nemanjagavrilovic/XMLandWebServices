@@ -82,6 +82,7 @@ public class Arrangment {
     @OneToOne
     protected Rating rating;
    
+    
     public Rating getRating() {
 		return rating;
 	}

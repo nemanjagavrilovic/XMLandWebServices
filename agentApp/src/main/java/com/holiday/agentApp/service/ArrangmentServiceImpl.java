@@ -33,5 +33,8 @@ public class ArrangmentServiceImpl implements ArrangmentService{
 		// TODO Auto-generated method stub
 		return arrangmentRepository.update(realized, id);
 	}
-
+	@Override
+	public void deleteAll(){
+		arrangmentRepository.deleteAll();
+	}
 }

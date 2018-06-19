@@ -15,6 +15,10 @@
 </head>
 <body>
 <c:import url="_navbar.jsp"></c:import>
+<c:if test="${ empty user}">
+		<c:redirect url="/index.jsp"></c:redirect>
+	</c:if>
+	
 	<div class="inboxes">
 			<c:forEach items="${inboxes}" var="inbox">
 			

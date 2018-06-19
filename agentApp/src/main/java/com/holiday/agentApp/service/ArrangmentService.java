@@ -10,4 +10,5 @@ public interface ArrangmentService {
 	public Arrangment findOne(Long id);
 	public Arrangment save(Arrangment arrangment);
 	public int update(boolean realized,Long id);
+	public void deleteAll();
 }

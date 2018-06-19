@@ -50,6 +50,10 @@ import javax.xml.bind.annotation.XmlType;
 @Entity
 public class ObjectType implements Serializable {
 
+	public void setId(Long id) {
+		this.id = id;
+	}
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	protected Long id;

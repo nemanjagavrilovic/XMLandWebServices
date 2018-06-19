@@ -14,10 +14,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.holiday.agentApp.client.AccomodationClient;
+import com.holiday.agentApp.client.PriceClient;
+import com.holiday.agentApp.client.PriceScheduleClient;
 import com.holiday.agentApp.model.Accomodation;
-import com.holiday.agentApp.model.TUser;
-import com.holiday.agentApp.requestAndResponse.AccomodationFindByOwnerResponse;
+import com.holiday.agentApp.model.Price;
 import com.holiday.agentApp.requestAndResponse.AccomodationFindResponse;
+import com.holiday.agentApp.requestAndResponse.PriceSaveResponse;
 import com.holiday.agentApp.service.AccomodationService;
 
 @Controller
@@ -29,6 +31,8 @@ public class AccomodationsController {
 	
 	@Autowired
 	private AccomodationClient accomodationClient;
+	
+
 	@RequestMapping("/accomodation/{id}")
 	public String getAccomodation(@PathVariable ("id") Long id,HttpServletRequest request){
 	        
@@ -48,18 +52,24 @@ public class AccomodationsController {
 	public ResponseEntity<?> publish(@PathVariable("id") Long id){
 		
 		Accomodation ac=accomodationService.findById(id);
-		System.out.println(ac.getPriceShedule().getPrice().size());
+		
+		System.out.println("Broj cenaaa"+ac.getPriceShedule().getPrice().size());
 		JAXBElement<AccomodationFindResponse> saved=accomodationClient.find(ac);
 		if(saved.getValue().getAccomodation()!=null){
 			 return new ResponseEntity<Accomodation>(ac,HttpStatus.BAD_REQUEST);
 
 		}else{
 				accomodationClient.save(ac);
-			return new ResponseEntity<Accomodation>(ac,HttpStatus.OK);
+
 		}
+		return new ResponseEntity<Accomodation>(ac,HttpStatus.OK);
 	}
 	@RequestMapping(value="/delete/{id}",method=RequestMethod.DELETE)
 	public ResponseEntity<?> delete(@PathVariable("id") Long id){
+		
+		Accomodation response=accomodationClient.find(accomodationService.findById(id)).getValue().getAccomodation();
+		if(response!=null)
+			accomodationClient.delete(response);
 		accomodationService.delete(id);
 		return new ResponseEntity<Long>(id,HttpStatus.OK);
 	}

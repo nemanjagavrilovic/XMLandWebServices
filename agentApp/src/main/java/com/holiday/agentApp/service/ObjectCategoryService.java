@@ -8,4 +8,5 @@ public interface ObjectCategoryService {
 	ObjectCategory save(ObjectCategory category);
 	ObjectCategory findById(Long id);
 	public List<ObjectCategory> findAll();
+	public void delete(Long id);
 }

@@ -7,12 +7,14 @@ import org.springframework.ws.soap.client.core.SoapActionCallback;
 
 import com.holiday.agentApp.model.Accomodation;
 import com.holiday.agentApp.model.TUser;
+import com.holiday.agentApp.requestAndResponse.AccomodationDeleteRequest;
 import com.holiday.agentApp.requestAndResponse.AccomodationFindByOwnerRequest;
 import com.holiday.agentApp.requestAndResponse.AccomodationFindByOwnerResponse;
 import com.holiday.agentApp.requestAndResponse.AccomodationFindRequest;
 import com.holiday.agentApp.requestAndResponse.AccomodationFindResponse;
 import com.holiday.agentApp.requestAndResponse.AccomodationSaveRequest;
 import com.holiday.agentApp.requestAndResponse.AccomodationSaveResponse;
+import com.holiday.agentApp.requestAndResponse.DeleteResponse;
 
 public class AccomodationClient extends WebServiceGatewaySupport{
 
@@ -57,5 +59,14 @@ public class AccomodationClient extends WebServiceGatewaySupport{
 
 		return response;
 
+	}
+	public JAXBElement<DeleteResponse> delete(Accomodation accomodation){
+		AccomodationDeleteRequest request=new AccomodationDeleteRequest();
+		request.setAccomodaiton(accomodation);
+		JAXBElement<DeleteResponse> response=(JAXBElement<DeleteResponse>)getWebServiceTemplate()
+		.marshalSendAndReceive("http://localhost:1111/Service/AccomodationWebService?wsdl", request,
+				new SoapActionCallback("http://webService.projekat.xml/delete"));
+		
+		return response;
 	}
 }

@@ -21,12 +21,20 @@ public class ObjectCategoryServiceImpl implements ObjectCategoryService {
 	@Override
 	public ObjectCategory save(ObjectCategory category) {
 		// TODO Auto-generated method stub
-		return objectCategoryRepository.save(category);
+		if(!objectCategoryRepository.exists(category.getId())){
+			return objectCategoryRepository.save(category);
+		}
+		return category;
 	}
 	@Override
 	public List<ObjectCategory> findAll() {
 		// TODO Auto-generated method stub
 		return (List<ObjectCategory>) objectCategoryRepository.findAll();
+	}
+	@Override
+	public void delete(Long id) {
+		// TODO Auto-generated method stub
+		objectCategoryRepository.delete(id);
 	}
 
 }

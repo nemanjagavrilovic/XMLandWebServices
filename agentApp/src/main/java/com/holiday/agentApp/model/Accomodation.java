@@ -124,7 +124,7 @@ public class Accomodation implements Serializable {
     @XmlElement(name = "Location", required = true)
     protected Location location;
     
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
     @XmlElement(name = "Rating")
     protected List<Rating> rating;
     
@@ -132,7 +132,7 @@ public class Accomodation implements Serializable {
     @XmlElement(name = "Services")
     protected List<Services> services;
     
-    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     @XmlElement(name = "Price_shedule", required = true)
     protected PriceShedule priceShedule;
 

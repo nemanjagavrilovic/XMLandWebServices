@@ -90,6 +90,24 @@ public class ObjectFactory {
     private final static QName _ArrangmentFindByAccOwnerRequest_QNAME = new QName("http://webService.projekat.xml/", "arrangmentFindByAccOwnerRequest");
     private final static QName _ArrangmentFindByAccOwnerResponse_QNAME = new QName("http://webService.projekat.xml/", "arrangmentFindByAccOwnerResponse");
    
+    private final static QName _AccomodationDeleteRequest_QNAME = new QName("http://webService.projekat.xml/", "accomodationDeleteRequest");
+    
+    private final static QName _RatingFindByIdRequest_QNAME = new QName("http://webService.projekat.xml/", "RatingFindByIdRequest");
+    private final static QName _RatingFindByIdResponse_QNAME = new QName("http://webService.projekat.xml/", "RatingFindByIdResponse");
+
+    private final static QName _RatingSaveRequest_QNAME = new QName("http://webService.projekat.xml/", "ratingSaveRequest");
+    private final static QName _RatingSaveResponse_QNAME = new QName("http://webService.projekat.xml/", "ratingSaveResponse");
+
+    private final static QName _PriceSaveRequest_QNAME = new QName("http://webService.projekat.xml/", "priceSaveRequest");
+    private final static QName _PriceSaveResponse_QNAME = new QName("http://webService.projekat.xml/", "priceSaveResponse");
+
+    private final static QName _PriceSheduleSaveRequest_QNAME = new QName("http://webService.projekat.xml/", "priceSheduleSaveRequest");
+    private final static QName _PriceSheduleSaveResponse_QNAME = new QName("http://webService.projekat.xml/", "priceSheduleSaveResponse");
+    private final static QName _DeleteResponse_QNAME = new QName("http://webService.projekat.xml/", "deleteResponse");
+
+    private final static QName _UserFindByEmailAndPasswordRequest_QNAME = new QName("http://webService.projekat.xml/", "userFindByEmailAndPasswordRequest");
+    private final static QName _UserFindByEmailAndPasswordResponse_QNAME = new QName("http://webService.projekat.xml/", "userFindByEmailAndPasswordResponse");
+
     /**
      * Create an instance of {@link AccomodationFindResponse }
      * 
@@ -126,6 +144,35 @@ public class ObjectFactory {
         return new ObjectTypeAllRequest();
     }
     /**
+     * Create an instance of {@link RatingFindByIdRequest }
+     * 
+     */
+    public RatingFindByIdRequest createRatingFindByIdRequest() {
+        return new RatingFindByIdRequest();
+    }
+    /**
+     * Create an instance of {@link RatingSaveResponse }
+     * 
+     */
+    public RatingSaveResponse createRatingSaveResponse() {
+        return new RatingSaveResponse();
+    }
+
+    /**
+     * Create an instance of {@link RatingSaveRequest }
+     * 
+     */
+    public RatingSaveRequest createRatingSaveRequest() {
+        return new RatingSaveRequest();
+    }
+    /**
+     * Create an instance of {@link RatingFindByIdResponse }
+     * 
+     */
+    public RatingFindByIdResponse createRatingFindByIdResponse() {
+        return new RatingFindByIdResponse();
+    }
+    /**
      * Create an instance of {@link LocationSaveResponse }
      * 
      */
@@ -139,6 +186,29 @@ public class ObjectFactory {
      */
     public LocationSaveRequest createLocationSaveRequest() {
         return new LocationSaveRequest();
+    }
+
+    /**
+     * Create an instance of {@link DeleteResponse }
+     * 
+     */
+    public DeleteResponse createDeleteResponse() {
+        return new DeleteResponse();
+    }
+    /**
+     * Create an instance of {@link UserFindByEmailAndPasswordRequest }
+     * 
+     */
+    public UserFindByEmailAndPasswordRequest createUserFindByEmailAndPasswordRequest() {
+        return new UserFindByEmailAndPasswordRequest();
+    }
+
+    /**
+     * Create an instance of {@link UserFindByEmailAndPasswordResponse }
+     * 
+     */
+    public UserFindByEmailAndPasswordResponse createUserFindByEmailAndPasswordResponse() {
+        return new UserFindByEmailAndPasswordResponse();
     }
     /**
      * Create an instance of {@link ObjectCategoryByIdResponse }
@@ -276,6 +346,21 @@ public class ObjectFactory {
     public InboxReceiverRequest createInboxReceiverRequest() {
         return new InboxReceiverRequest();
     }
+    /**
+     * Create an instance of {@link PriceSaveResponse }
+     * 
+     */
+    public PriceSaveResponse createPriceSaveResponse() {
+        return new PriceSaveResponse();
+    }
+
+    /**
+     * Create an instance of {@link PriceSaveRequest }
+     * 
+     */
+    public PriceSaveRequest createPriceSaveRequest() {
+        return new PriceSaveRequest();
+    }
 
     /**
      * Create an instance of {@link InboxByIdResponse }
@@ -314,7 +399,13 @@ public class ObjectFactory {
     public LocationRequest createLocationRequest() {
         return new LocationRequest();
     }
-
+    /**
+     * Create an instance of {@link AccomodationDeleteRequest }
+     * 
+     */
+    public AccomodationDeleteRequest createAccomodationDeleteRequest() {
+        return new AccomodationDeleteRequest();
+    }
     /**
      * Create an instance of {@link LocationByIdResponse }
      *
@@ -364,7 +455,21 @@ public class ObjectFactory {
     public MessagesAllRequest createMessagesAllRequest() {
         return new MessagesAllRequest();
     }
+    /**
+     * Create an instance of {@link PriceSheduleSaveResponse }
+     * 
+     */
+    public PriceSheduleSaveResponse createPriceSheduleSaveResponse() {
+        return new PriceSheduleSaveResponse();
+    }
 
+    /**
+     * Create an instance of {@link PriceSheduleSaveRequest }
+     * 
+     */
+    public PriceSheduleSaveRequest createPriceSheduleSaveRequest() {
+        return new PriceSheduleSaveRequest();
+    }
     /**
      * Create an instance of {@link UserByIdRequest }
      * 
@@ -862,5 +967,107 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://webService.projekat.xml/", name = "arrangmentFindByAccOwnerResponse")
     public JAXBElement<ArrangmentFindByAccOwnerResponse> createArrangmentFindByAccOwnerResponse(ArrangmentFindByAccOwnerResponse value) {
         return new JAXBElement<ArrangmentFindByAccOwnerResponse>(_ArrangmentFindByAccOwnerResponse_QNAME, ArrangmentFindByAccOwnerResponse.class, null, value);
+    }
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link AccomodationDeleteRequest }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://webService.projekat.xml/", name = "accomodationDeleteRequest")
+    public JAXBElement<AccomodationDeleteRequest> createAccomodationDeleteRequest(AccomodationDeleteRequest value) {
+        return new JAXBElement<AccomodationDeleteRequest>(_AccomodationDeleteRequest_QNAME, AccomodationDeleteRequest.class, null, value);
+    }
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link RatingFindByIdRequest }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://webService.projekat.xml/", name = "RatingFindByIdRequest")
+    public JAXBElement<RatingFindByIdRequest> createRatingFindByIdRequest(RatingFindByIdRequest value) {
+        return new JAXBElement<RatingFindByIdRequest>(_RatingFindByIdRequest_QNAME, RatingFindByIdRequest.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link RatingFindByIdResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://webService.projekat.xml/", name = "RatingFindByIdResponse")
+    public JAXBElement<RatingFindByIdResponse> createRatingFindByIdResponse(RatingFindByIdResponse value) {
+        return new JAXBElement<RatingFindByIdResponse>(_RatingFindByIdResponse_QNAME, RatingFindByIdResponse.class, null, value);
+    }
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link RatingSaveRequest }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://webService.projekat.xml/", name = "ratingSaveRequest")
+    public JAXBElement<RatingSaveRequest> createRatingSaveRequest(RatingSaveRequest value) {
+        return new JAXBElement<RatingSaveRequest>(_RatingSaveRequest_QNAME, RatingSaveRequest.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link RatingSaveResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://webService.projekat.xml/", name = "ratingSaveResponse")
+    public JAXBElement<RatingSaveResponse> createRatingSaveResponse(RatingSaveResponse value) {
+        return new JAXBElement<RatingSaveResponse>(_RatingSaveResponse_QNAME, RatingSaveResponse.class, null, value);
+    }
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link PriceSaveRequest }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://webService.projekat.xml/", name = "priceSaveRequest")
+    public JAXBElement<PriceSaveRequest> createPriceSaveRequest(PriceSaveRequest value) {
+        return new JAXBElement<PriceSaveRequest>(_PriceSaveRequest_QNAME, PriceSaveRequest.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link PriceSaveResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://webService.projekat.xml/", name = "priceSaveResponse")
+    public JAXBElement<PriceSaveResponse> createPriceSaveResponse(PriceSaveResponse value) {
+        return new JAXBElement<PriceSaveResponse>(_PriceSaveResponse_QNAME, PriceSaveResponse.class, null, value);
+    }
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link PriceSheduleSaveRequest }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://webService.projekat.xml/", name = "priceSheduleSaveRequest")
+    public JAXBElement<PriceSheduleSaveRequest> createPriceSheduleSaveRequest(PriceSheduleSaveRequest value) {
+        return new JAXBElement<PriceSheduleSaveRequest>(_PriceSheduleSaveRequest_QNAME, PriceSheduleSaveRequest.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link PriceSheduleSaveResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://webService.projekat.xml/", name = "priceSheduleSaveResponse")
+    public JAXBElement<PriceSheduleSaveResponse> createPriceSheduleSaveResponse(PriceSheduleSaveResponse value) {
+        return new JAXBElement<PriceSheduleSaveResponse>(_PriceSheduleSaveResponse_QNAME, PriceSheduleSaveResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link DeleteResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://webService.projekat.xml/", name = "deleteResponse")
+    public JAXBElement<DeleteResponse> createDeleteResponse(DeleteResponse value) {
+        return new JAXBElement<DeleteResponse>(_DeleteResponse_QNAME, DeleteResponse.class, null, value);
+    }
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link UserFindByEmailAndPasswordRequest }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://webService.projekat.xml/", name = "userFindByEmailAndPasswordRequest")
+    public JAXBElement<UserFindByEmailAndPasswordRequest> createUserFindByEmailAndPasswordRequest(UserFindByEmailAndPasswordRequest value) {
+        return new JAXBElement<UserFindByEmailAndPasswordRequest>(_UserFindByEmailAndPasswordRequest_QNAME, UserFindByEmailAndPasswordRequest.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link UserFindByEmailAndPasswordResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://webService.projekat.xml/", name = "userFindByEmailAndPasswordResponse")
+    public JAXBElement<UserFindByEmailAndPasswordResponse> createUserFindByEmailAndPasswordResponse(UserFindByEmailAndPasswordResponse value) {
+        return new JAXBElement<UserFindByEmailAndPasswordResponse>(_UserFindByEmailAndPasswordResponse_QNAME, UserFindByEmailAndPasswordResponse.class, null, value);
     }
 }

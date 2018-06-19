@@ -33,18 +33,21 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse"
              id="bs-example-navbar-collapse-1">
+            <c:if test="${not empty user}">
             <ul id="nav" class="nav navbar-nav">
 				<li><a href="/createAccomodation/">Create accomodation</a>
 				<li><a href="/arrangments/">Arrangments</a></li>
 				<li><a href="/accomodations/all">Accomodations</a></li>
+				<li><a href="/inbox/">Inbox</a></li>
           	</ul>
+          	</c:if>
             <ul class="nav navbar-nav navbar-right">
-                <c:if test="${empty loggedUser}">
+                <c:if test="${empty user}">
                     <li><a href="/index.jsp" id="Login">Log in</a></li>
               
                 </c:if>
-                <c:if test="${not empty loggedUser}">
-                    <li><a href="/userController/logout">Log out</a></li>
+                <c:if test="${not empty user}">
+                    <li><a href="/login/logout">Log out</a></li>
                 </c:if>
 
             </ul>
