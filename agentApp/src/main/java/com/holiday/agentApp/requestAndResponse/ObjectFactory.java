@@ -108,6 +108,30 @@ public class ObjectFactory {
     private final static QName _UserFindByEmailAndPasswordRequest_QNAME = new QName("http://webService.projekat.xml/", "userFindByEmailAndPasswordRequest");
     private final static QName _UserFindByEmailAndPasswordResponse_QNAME = new QName("http://webService.projekat.xml/", "userFindByEmailAndPasswordResponse");
 
+    private final static QName _RatingFindByAccRequest_QNAME = new QName("http://webService.projekat.xml/", "ratingFindByAccRequest");
+    private final static QName _RatingFindByAccResponse_QNAME = new QName("http://webService.projekat.xml/", "ratingFindByAccResponse");
+  
+    private final static QName _CommentFindByAccRequest_QNAME = new QName("http://webService.projekat.xml/", "commentFindByAccRequest");
+    private final static QName _CommentFindByAccResponse_QNAME = new QName("http://webService.projekat.xml/", "commentFindByAccResponse");
+
+    private final static QName _MessageUpdateRequest_QNAME = new QName("http://webService.projekat.xml/", "messageUpdateRequest");
+    private final static QName _MessageUpdateResponse_QNAME = new QName("http://webService.projekat.xml/", "messageUpdateResponse");
+    
+    /**
+     * Create an instance of {@link CommentFindByAccResponse }
+     * 
+     */
+    public CommentFindByAccResponse createCommentFindByAccResponse() {
+        return new CommentFindByAccResponse();
+    }
+
+    /**
+     * Create an instance of {@link CommentFindByAccRequest }
+     * 
+     */
+    public CommentFindByAccRequest createCommentFindByAccRequest() {
+        return new CommentFindByAccRequest();
+    }
     /**
      * Create an instance of {@link AccomodationFindResponse }
      * 
@@ -232,7 +256,21 @@ public class ObjectFactory {
     public ArrangmentUpdateResponse createArrangmentUpdateResponse() {
         return new ArrangmentUpdateResponse();
     }
+    /**
+     * Create an instance of {@link RatingFindByAccResponse }
+     * 
+     */
+    public RatingFindByAccResponse createRatingFindByAccResponse() {
+        return new RatingFindByAccResponse();
+    }
 
+    /**
+     * Create an instance of {@link RatingFindByAccRequest }
+     * 
+     */
+    public RatingFindByAccRequest createRatingFindByAccRequest() {
+        return new RatingFindByAccRequest();
+    }
     /**
      * Create an instance of {@link ObjectCategoryAllRequest }
      * 
@@ -461,6 +499,21 @@ public class ObjectFactory {
      */
     public PriceSheduleSaveResponse createPriceSheduleSaveResponse() {
         return new PriceSheduleSaveResponse();
+    }
+    /**
+     * Create an instance of {@link MessageUpdateRequest }
+     * 
+     */
+    public MessageUpdateRequest createMessageUpdateRequest() {
+        return new MessageUpdateRequest();
+    }
+
+    /**
+     * Create an instance of {@link MessageUpdateResponse }
+     * 
+     */
+    public MessageUpdateResponse createMessageUpdateResponse() {
+        return new MessageUpdateResponse();
     }
 
     /**
@@ -1069,5 +1122,56 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://webService.projekat.xml/", name = "userFindByEmailAndPasswordResponse")
     public JAXBElement<UserFindByEmailAndPasswordResponse> createUserFindByEmailAndPasswordResponse(UserFindByEmailAndPasswordResponse value) {
         return new JAXBElement<UserFindByEmailAndPasswordResponse>(_UserFindByEmailAndPasswordResponse_QNAME, UserFindByEmailAndPasswordResponse.class, null, value);
+    }
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link RatingFindByAccRequest }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://webService.projekat.xml/", name = "ratingFindByAccRequest")
+    public JAXBElement<RatingFindByAccRequest> createRatingFindByAccRequest(RatingFindByAccRequest value) {
+        return new JAXBElement<RatingFindByAccRequest>(_RatingFindByAccRequest_QNAME, RatingFindByAccRequest.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link RatingFindByAccResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://webService.projekat.xml/", name = "ratingFindByAccResponse")
+    public JAXBElement<RatingFindByAccResponse> createRatingFindByAccResponse(RatingFindByAccResponse value) {
+        return new JAXBElement<RatingFindByAccResponse>(_RatingFindByAccResponse_QNAME, RatingFindByAccResponse.class, null, value);
+    }
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link CommentFindByAccRequest }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://webService.projekat.xml/", name = "commentFindByAccRequest")
+    public JAXBElement<CommentFindByAccRequest> createCommentFindByAccRequest(CommentFindByAccRequest value) {
+        return new JAXBElement<CommentFindByAccRequest>(_CommentFindByAccRequest_QNAME, CommentFindByAccRequest.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link CommentFindByAccResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://webService.projekat.xml/", name = "commentFindByAccResponse")
+    public JAXBElement<CommentFindByAccResponse> createCommentFindByAccResponse(CommentFindByAccResponse value) {
+        return new JAXBElement<CommentFindByAccResponse>(_CommentFindByAccResponse_QNAME, CommentFindByAccResponse.class, null, value);
+    }
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link MessageUpdateRequest }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://webService.projekat.xml/", name = "messageUpdateRequest")
+    public JAXBElement<MessageUpdateRequest> createMessageUpdateRequest(MessageUpdateRequest value) {
+        return new JAXBElement<MessageUpdateRequest>(_MessageUpdateRequest_QNAME, MessageUpdateRequest.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link MessageUpdateResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://webService.projekat.xml/", name = "messageUpdateResponse")
+    public JAXBElement<MessageUpdateResponse> createMessageUpdateResponse(MessageUpdateResponse value) {
+        return new JAXBElement<MessageUpdateResponse>(_MessageUpdateResponse_QNAME, MessageUpdateResponse.class, null, value);
     }
 }

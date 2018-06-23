@@ -1,5 +1,6 @@
 package com.holiday.agentApp.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -14,12 +15,20 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.holiday.agentApp.client.AccomodationClient;
-import com.holiday.agentApp.client.PriceClient;
-import com.holiday.agentApp.client.PriceScheduleClient;
+import com.holiday.agentApp.client.CommentClient;
+import com.holiday.agentApp.client.LocationClient;
+import com.holiday.agentApp.client.ObjectCategoryClient;
+import com.holiday.agentApp.client.ObjectTypeClient;
+import com.holiday.agentApp.client.RatingClient;
+import com.holiday.agentApp.client.ServiceClient;
 import com.holiday.agentApp.model.Accomodation;
-import com.holiday.agentApp.model.Price;
+import com.holiday.agentApp.model.ObjectCategory;
+import com.holiday.agentApp.model.ObjectType;
+import com.holiday.agentApp.model.Services;
 import com.holiday.agentApp.requestAndResponse.AccomodationFindResponse;
-import com.holiday.agentApp.requestAndResponse.PriceSaveResponse;
+import com.holiday.agentApp.requestAndResponse.ObjectCategoryAllResponse;
+import com.holiday.agentApp.requestAndResponse.ObjectTypeAllResponse;
+import com.holiday.agentApp.requestAndResponse.ServiceAllResponse;
 import com.holiday.agentApp.service.AccomodationService;
 
 @Controller
@@ -27,17 +36,35 @@ import com.holiday.agentApp.service.AccomodationService;
 public class AccomodationsController {
 
 	@Autowired
+	private LocationClient locationClient;
+
+	@Autowired
+	private ObjectCategoryClient categoryClient;
+
+	@Autowired
+	private ObjectTypeClient objectTypeClient;
+	@Autowired
+	private ServiceClient serviceClient;
+	
+	@Autowired
 	private AccomodationService accomodationService;
 	
 	@Autowired
 	private AccomodationClient accomodationClient;
 	
+	@Autowired
+	private RatingClient ratingClient;
 
+	@Autowired
+	private CommentClient commentClient;
 	@RequestMapping("/accomodation/{id}")
 	public String getAccomodation(@PathVariable ("id") Long id,HttpServletRequest request){
 	        
 		Accomodation response= accomodationService.findById(id);
+		JAXBElement<AccomodationFindResponse> inBigDataBase=accomodationClient.find(response);
 		request.getSession().setAttribute("accom", response);
+		request.getSession().setAttribute("comments", commentClient.getComments(inBigDataBase.getValue().getAccomodation()).getValue().getComment());
+		request.getSession().setAttribute("ratings", 	ratingClient.findByAccomodation(inBigDataBase.getValue().getAccomodation()).getValue().getRating());
 		return "forward:/accomodation.jsp";
 	}
 	
@@ -52,13 +79,41 @@ public class AccomodationsController {
 	public ResponseEntity<?> publish(@PathVariable("id") Long id){
 		
 		Accomodation ac=accomodationService.findById(id);
-		
-		System.out.println("Broj cenaaa"+ac.getPriceShedule().getPrice().size());
+		JAXBElement<ObjectCategoryAllResponse> objectCategory = (JAXBElement<ObjectCategoryAllResponse>) categoryClient
+				.findAll();
+		JAXBElement<ObjectTypeAllResponse> objectTypes = (JAXBElement<ObjectTypeAllResponse>) objectTypeClient
+				.findAll();
+		JAXBElement<ServiceAllResponse> services = serviceClient.findAll();
+	
 		JAXBElement<AccomodationFindResponse> saved=accomodationClient.find(ac);
+		
 		if(saved.getValue().getAccomodation()!=null){
 			 return new ResponseEntity<Accomodation>(ac,HttpStatus.BAD_REQUEST);
 
 		}else{
+			for(ObjectCategory item:objectCategory.getValue().getObjectCategory()){
+				if(item.getCategory().equals(ac.getCategory().getCategory())){
+					ac.setCategory(item);
+				}
+			}
+			for(ObjectType item:objectTypes.getValue().getObjectType()){
+				if(item.getType().equals(ac.getType().getType())){
+					ac.setType(item);
+				}
+			}
+			List<Services> newServices=new ArrayList<Services>();
+			for(Services item:services.getValue().getServices()){
+				for(Services item2: ac.getServices()){
+					if(item.getService().equals(item2.getService())){
+						System.out.println("Servis 1"+item.getService());
+						
+						System.out.println("Servis 2"+item2.getService());
+						newServices.add(item);
+					}
+				}
+				
+			}
+				ac.setServices(newServices);
 				accomodationClient.save(ac);
 
 		}
@@ -73,4 +128,5 @@ public class AccomodationsController {
 		accomodationService.delete(id);
 		return new ResponseEntity<Long>(id,HttpStatus.OK);
 	}
-}
+	
+} 

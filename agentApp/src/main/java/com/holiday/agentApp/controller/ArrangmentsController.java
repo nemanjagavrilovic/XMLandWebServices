@@ -15,17 +15,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.holiday.agentApp.client.AccomodationClient;
 import com.holiday.agentApp.client.ArrangmentClient;
 import com.holiday.agentApp.model.Accomodation;
-import com.holiday.agentApp.model.Agent;
 import com.holiday.agentApp.model.Arrangment;
-import com.holiday.agentApp.requestAndResponse.AccomodationFindByOwnerResponse;
+import com.holiday.agentApp.model.TUser;
 import com.holiday.agentApp.requestAndResponse.AccomodationFindResponse;
-import com.holiday.agentApp.requestAndResponse.ArrangmentFindByAccOwnerResponse;
 import com.holiday.agentApp.requestAndResponse.ArrangmentFindResponse;
 import com.holiday.agentApp.requestAndResponse.ArrangmentUpdateResponse;
 import com.holiday.agentApp.service.AccomodationService;
 import com.holiday.agentApp.service.ArrangmentService;
-import com.holiday.agentApp.service.LocationService;
-import com.holiday.agentApp.service.UserService;
 
 @Controller
 @RequestMapping("/arrangments")
@@ -62,14 +58,16 @@ public class ArrangmentsController {
 	}
 
 	@RequestMapping(value="/reserve/{id}",method=RequestMethod.POST)
-	public ResponseEntity <?> reserve(@PathVariable("id") Long id,@RequestBody Arrangment arrangment){
-		
+	public ResponseEntity <?> reserve(@PathVariable("id") Long id,@RequestBody Arrangment arrangment,HttpServletRequest request){
+		TUser user=(TUser)request.getSession().getAttribute("user");
 		Accomodation accomodation=accomodationService.findById(id);
+		JAXBElement<AccomodationFindResponse> bigDataBaseAccomodation=accomodationClient.find(accomodation);
+		arrangment.setOwner(user);
 		arrangment.setAccomodation(accomodation);
 		arrangment.setNumberOfPeople(accomodation.getMaxPerson());
-		JAXBElement<AccomodationFindResponse> bigDataBaseAccomodation=accomodationClient.find(accomodation);
 		arrangmentService.save(arrangment);
 		
+		System.out.println("Smestaj"+bigDataBaseAccomodation.getValue().getAccomodation());
 		arrangment.setAccomodation(bigDataBaseAccomodation.getValue().getAccomodation());
 		arrangment.setNumberOfPeople(bigDataBaseAccomodation.getValue().getAccomodation().getMaxPerson());
 		

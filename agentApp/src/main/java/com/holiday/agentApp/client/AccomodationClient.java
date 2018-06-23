@@ -32,14 +32,9 @@ public class AccomodationClient extends WebServiceGatewaySupport{
 	
 	public JAXBElement<AccomodationFindResponse> find(Accomodation accomodation){
 		AccomodationFindRequest request = new AccomodationFindRequest();
-		request.setLocation(accomodation.getLocation());
 		request.setName(accomodation.getName());
 		request.setDescription(accomodation.getDescription());
-		request.setObjectType(accomodation.getType());
-		request.setObjectCategory(accomodation.getCategory());
-		request.setOwner(accomodation.getOwner());
 		request.setMaxPerson(accomodation.getMaxPerson());
-		request.setPriceShedule(accomodation.getPriceShedule());
 		@SuppressWarnings("unchecked")
 		JAXBElement<AccomodationFindResponse> response = (JAXBElement<AccomodationFindResponse>) getWebServiceTemplate()
 				.marshalSendAndReceive("http://localhost:1111/Service/AccomodationWebService?wsdl", request,

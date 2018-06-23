@@ -31,4 +31,10 @@ public class ObjectTypeServiceImpl implements ObjectTypeService{
 		return (List<ObjectType>) objectTypeRepository.findAll();
 	}
 
+	@Override
+	public void delete(Long id) {
+		// TODO Auto-generated method stub
+		 objectTypeRepository.delete(id);
+	}
+
 }

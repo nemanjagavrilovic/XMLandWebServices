@@ -8,11 +8,11 @@ $(document).on('click','#delete',function(e){
 			url:url,
 			type:'DELETE',
 			success:function(data){
-				alert("Uspesno obrisano")
+				toastr.success('Uspesno obrisano')
 				row.parent().parent().remove()
 			},
 			error:function(d,e,e){
-				alert("Postoji rezervacija za ovaj smestaj")
+				toastr.warning('Postoji rezervacija za ovaj smestaj')
 			}
 			})
 	}

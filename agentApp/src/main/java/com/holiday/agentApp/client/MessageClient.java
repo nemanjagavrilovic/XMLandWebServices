@@ -11,6 +11,8 @@ import com.holiday.agentApp.requestAndResponse.MessageByInboxRequest;
 import com.holiday.agentApp.requestAndResponse.MessageByInboxResponse;
 import com.holiday.agentApp.requestAndResponse.MessageSaveRequest;
 import com.holiday.agentApp.requestAndResponse.MessageSaveResponse;
+import com.holiday.agentApp.requestAndResponse.MessageUpdateRequest;
+import com.holiday.agentApp.requestAndResponse.MessageUpdateResponse;
 import com.holiday.agentApp.requestAndResponse.MessagesAllRequest;
 import com.holiday.agentApp.requestAndResponse.MessagesAllResponse;
 
@@ -56,4 +58,17 @@ public class MessageClient  extends WebServiceGatewaySupport{
 				return response;
 
 			}
+		public JAXBElement<MessageUpdateResponse> update(Long inboxId,Long id){
+			MessageUpdateRequest request=new MessageUpdateRequest();
+			request.setInboxId(inboxId);
+			request.setId(id);
+			@SuppressWarnings("unchecked")
+			JAXBElement<MessageUpdateResponse> response = (JAXBElement<MessageUpdateResponse>) getWebServiceTemplate()
+					.marshalSendAndReceive("http://localhost:1111/Service/MessageWebService?wsdl",
+							request,
+							new SoapActionCallback("http://webService.projekat.xml/update"));
+
+			return response;
+
+		}
 }

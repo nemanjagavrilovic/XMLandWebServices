@@ -8,6 +8,7 @@ import javax.xml.bind.JAXBElement;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -37,12 +38,10 @@ public class InboxController {
 	@Autowired
 	private InboxClient inboxClient;
 	
-	@Autowired
-	private UserClient userClient;
 	@RequestMapping(value="/",method=RequestMethod.GET)
 	public String inboxHome(HttpServletRequest request){
-		TUser user=userClient.userById(1L).getValue().getUser();
-		System.out.println("Korisnik: "+user.getEmail());
+		TUser user=(TUser) request.getSession().getAttribute("user");
+		
 		List<Inbox> inbox=  inboxClient.findByReceiver(user).getValue().getInbox();
 		if(inbox!=null){
 			request.getSession().setAttribute("inboxes",inbox);
@@ -70,10 +69,18 @@ public class InboxController {
 	public ResponseEntity<Message> sentMessage(@RequestBody Message message,@PathVariable("inboxId") Long inboxId){
 		JAXBElement<InboxByIdResponse> inbox=inboxClient.findById(inboxId);
 		
+		
 		message.setSentBy(inbox.getValue().getInbox().getReceiver());
 		message.setInbox(inbox.getValue().getInbox());
 		JAXBElement<MessageSaveResponse> mess=messageClient.saveMessage(message);
+		messageClient.update(inboxId, mess.getValue().getMessageSaved().getId());
 		return new ResponseEntity<Message>(mess.getValue().getMessageSaved(),HttpStatus.CREATED);
 	}
-	
+	@RequestMapping(value="/loggedUser",method=RequestMethod.GET,
+			produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<TUser> loggedUser(HttpServletRequest request){
+		TUser user=(TUser) request.getSession().getAttribute("user");
+		return new ResponseEntity<TUser>(user,HttpStatus.OK);
+	}
+
 }

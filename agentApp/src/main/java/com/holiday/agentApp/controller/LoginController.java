@@ -40,6 +40,7 @@ import com.holiday.agentApp.requestAndResponse.LocationResponse;
 import com.holiday.agentApp.requestAndResponse.ObjectCategoryAllResponse;
 import com.holiday.agentApp.requestAndResponse.ObjectTypeAllResponse;
 import com.holiday.agentApp.requestAndResponse.ServiceAllResponse;
+import com.holiday.agentApp.requestAndResponse.UserFindByEmailAndPasswordResponse;
 import com.holiday.agentApp.service.AccomodationService;
 import com.holiday.agentApp.service.ArrangmentService;
 import com.holiday.agentApp.service.LocationService;
@@ -105,9 +106,11 @@ public class LoginController {
 	@RequestMapping(value = "/signIn", method = RequestMethod.POST,
 			consumes=MediaType.APPLICATION_JSON_VALUE)
 	private ResponseEntity<Object> login(@RequestBody Agent userLogin,HttpServletRequest request) throws URISyntaxException {
+		TUser loggedUser=null;
 		
-		TUser loggedUser = userClient.userFindByEmailAndPassword(userLogin.getEmail(), userLogin.getPassword())
-				.getValue().getUser();
+		if(userService.findByEmailAndPassword(userLogin.getEmail(), userLogin.getPassword())!=null){
+			loggedUser=userService.findByEmailAndPassword(userLogin.getEmail(), userLogin.getPassword());
+		}
 		if (loggedUser != null & loggedUser instanceof Agent) {
 			JAXBElement<LocationResponse> object = (JAXBElement<LocationResponse>) locationClient.getAllLocations();
 			JAXBElement<ObjectCategoryAllResponse> objectCategory = (JAXBElement<ObjectCategoryAllResponse>) categoryClient
@@ -116,10 +119,12 @@ public class LoginController {
 					.findAll();
 			JAXBElement<ServiceAllResponse> services = serviceClient.findAll();
 			List<ObjectCategory> categories = objectCategoryService.findAll();
+			List<ObjectType> types=objectTypeService.findAll();
+			List<Services> servicesIn=servicesService.findAll();
 			for (ObjectCategory item : categories) {
 				boolean flag = true;
 				for (ObjectCategory newCategory : objectCategory.getValue().getObjectCategory()) {
-					if (item.getId().equals(newCategory.getId())) {
+					if (item.getCategory().equals(newCategory.getCategory())) {
 						flag = false;
 					}
 				}
@@ -127,9 +132,20 @@ public class LoginController {
 					objectCategoryService.delete(item.getId());
 				}
 			}
-
+			
 			for (ObjectCategory item : objectCategory.getValue().getObjectCategory()) {
 				objectCategoryService.save(item);
+			}
+			for (ObjectType item : types) {
+				boolean flag = true;
+				for (ObjectType newType : objectTypes.getValue().getObjectType()) {
+					if (item.getType().equals(newType.getType())) {
+						flag = false;
+					}
+				}
+				if (flag == true) {
+					objectTypeService.delete(item.getId());
+				}
 			}
 			for (ObjectType item : objectTypes.getValue().getObjectType()) {
 				objectTypeService.save(item);
@@ -137,20 +153,31 @@ public class LoginController {
 			for (Location location : object.getValue().getLocations()) {
 				locationService.save(location);
 			}
+			for (Services item : servicesIn) {
+				boolean flag = true;
+				for (Services newType : services.getValue().getServices()) {
+					if (item.getService().equals(newType.getService())) {
+						flag = false;
+					}
+				}
+				if (flag == true) {
+					servicesService.delete(item.getId());
+				}
+			}
 			for (Services service : services.getValue().getServices()) {
 				servicesService.save(service);
 			}
 			JAXBElement<AccomodationFindByOwnerResponse> accomodations = accomodationClient
-					.findByOwner(userService.findById(1L));
+					.findByOwner(loggedUser);
 			for (Accomodation accomodation : accomodations.getValue().getAccomodation()) {
 				for (Rating item : accomodation.getRating()) {
 					ratingService.save(ratingClient.findById(item.getId()).getValue().getRating());
 				}
 
-				accomodationService.save(accomodation);
+			//	accomodationService.save(accomodation);
 			}
-
-			JAXBElement<ArrangmentFindByAccOwnerResponse> response = arrangmentClient.findByAccOwner(1L);
+			Agent a=(Agent) loggedUser;
+			JAXBElement<ArrangmentFindByAccOwnerResponse> response = arrangmentClient.findByAccOwner(a.getPMB());
 			arrangmentService.deleteAll();
 			for (Arrangment arr : response.getValue().getArrangment()) {
 				Accomodation re = accomodationService.find(arr.getAccomodation());
@@ -163,7 +190,7 @@ public class LoginController {
 				arr.setId(null);
 				arrangmentService.save(arr);
 			}
-			URI uri = new URI("/createAccomodation/");
+			URI uri = new URI("/agent2/createAccomodation/");
 			HttpHeaders httpHeaders = new HttpHeaders();
 
 			httpHeaders.setLocation(uri);

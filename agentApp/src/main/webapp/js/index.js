@@ -5,7 +5,7 @@ $(document).on('click','#login',function(e){
 		"password":$("#password").val()
 	})
 	$.ajax({
-		url:'/login/signIn',
+		url:'/agent2/login/signIn',
 		type:'POST',
 		contentType:'application/json',
 		dataType:'json',
@@ -14,7 +14,7 @@ $(document).on('click','#login',function(e){
 			window.top.location=data;
 		},
 		error:function(data){
-			alert('Pogresan email ili lozinka!')
+			toastr.error('Pogresan email ili loznika!')
 		}
 	})
 })

@@ -8,4 +8,5 @@ public interface ObjectTypeService {
 	ObjectType save(ObjectType type);
 	ObjectType getObjectType(Long id);
 	public List<ObjectType> findAll();
+	public void delete(Long id);
 }

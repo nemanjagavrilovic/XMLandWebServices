@@ -23,7 +23,7 @@
 			<c:forEach items="${inboxes}" var="inbox">
 			
 			<div>
-				<a id="link" href="/inbox/${inbox.id}">${inbox.sender.name} ${inbox.sender.surname }</a>
+				<a id="link" href="../inbox/${inbox.id}">${inbox.sender.name} ${inbox.sender.surname }</a>
 			</div>
 			</c:forEach>
 		</div>

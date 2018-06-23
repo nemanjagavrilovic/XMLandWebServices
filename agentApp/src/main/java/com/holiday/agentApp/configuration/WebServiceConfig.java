@@ -10,7 +10,6 @@ import org.springframework.context.annotation.Configuration;
 
 import com.holiday.agentApp.repository.AccomodationRepository;
 import com.holiday.agentApp.webService.AccomodationWebServiceImpl;
-import com.holiday.agentApp.webService.SyncServiceImpl;
 
 
 
@@ -29,11 +28,5 @@ public class WebServiceConfig {
 	        return endpoint;
 	  
 	}
-	@Bean
-	public Endpoint syncService(){
-	      EndpointImpl endpoint = new EndpointImpl(bus, new SyncServiceImpl());
-	        endpoint.publish("/SyncService");
-	        return endpoint;
-	  
-	}
+	
 }

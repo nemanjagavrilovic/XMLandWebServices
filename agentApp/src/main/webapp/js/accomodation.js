@@ -1,4 +1,4 @@
-$(document).on('click','#publish',function(e){
+	$(document).on('click','#publish',function(e){
 	e.preventDefault();
 	var confirmed=confirm("Da li zelite da objavite smestaj");
 	if(confirmed){
@@ -7,10 +7,11 @@ $(document).on('click','#publish',function(e){
 			url:url,
 			type:'POST',
 			success:function(data){
-				alert('Uspesno objavljeno')
+				toastr.success('Uspesno objavljeno!')
 			},
 			error:function(data){
-				alert('Vec je objavljen smestaj.')
+				toastr.error('Smestaj je vec objavljen!')
+
 			}
 		})
 	}
@@ -32,7 +33,7 @@ $(document).on('click','#reserveButton',function(e){
 		dataType:'json',
 		data:data,
 		success:function(data){
-			alert("Rezervisano")
+			toastr.success('Rezervisano!')
 		}
 	})
 })

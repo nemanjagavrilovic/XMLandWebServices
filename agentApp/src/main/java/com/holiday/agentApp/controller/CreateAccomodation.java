@@ -23,6 +23,7 @@ import com.holiday.agentApp.client.ObjectCategoryClient;
 import com.holiday.agentApp.client.ObjectTypeClient;
 import com.holiday.agentApp.client.ServiceClient;
 import com.holiday.agentApp.model.Accomodation;
+import com.holiday.agentApp.model.Agent;
 import com.holiday.agentApp.model.Location;
 import com.holiday.agentApp.model.ObjectCategory;
 import com.holiday.agentApp.model.ObjectType;
@@ -94,18 +95,14 @@ public class CreateAccomodation {
 	
 	@RequestMapping(value="/getObjectType/{id}",method=RequestMethod.GET)
 	public ResponseEntity<ObjectType> getObjectType(@PathVariable ("id") Long id){
-		JAXBElement<ObjectTypeByIdResponse> response=objectTypeClient.findById(id);
-		System.out.println("Type id"+response.getValue().getObjectType().getId());
-		System.out.println("Type"+response.getValue().getObjectType().getType());
+		ObjectType response=objectTypeService.getObjectType(id);
 		
-		return new ResponseEntity<ObjectType>(response.getValue().getObjectType(),HttpStatus.OK);
+		return new ResponseEntity<ObjectType>(response,HttpStatus.OK);
 	}
 	
 	@RequestMapping(value="/getObjectCategory/{id}",method=RequestMethod.GET)
 	public ResponseEntity<ObjectCategory> getObjectCategory(@PathVariable ("id") Long id){
-		ObjectCategory category=categoryClient.findById(id).getValue().getObjectCategory();
-		System.out.println("Kategorija id"+category.getId());
-		System.out.println("Kategorija :"+category.getCategory());
+		ObjectCategory category=objectCategoryService.findById(id);
 		return new ResponseEntity<ObjectCategory>(category,HttpStatus.OK);
 	}
 	@RequestMapping(value="/getLocation/{id}",method=RequestMethod.GET)
@@ -138,8 +135,9 @@ public class CreateAccomodation {
 		return new ResponseEntity<List<Services>>(services,HttpStatus.OK);	
 	}
 	@RequestMapping(value="/create",method=RequestMethod.POST)
-	public ResponseEntity<Accomodation> createAccomodation(@RequestBody Accomodation accomodation){
-		System.out.println(accomodation.getMaxPerson());
+	public ResponseEntity<Accomodation> createAccomodation(@RequestBody Accomodation accomodation,HttpServletRequest request){
+		Agent user=(Agent) request.getSession().getAttribute("user");
+		accomodation.setOwner(user);
 		accomodationService.save(accomodation);
 		return new ResponseEntity<Accomodation>(accomodation,HttpStatus.CREATED);
 	}

@@ -42,8 +42,8 @@ public class AccomodationServiceImpl implements AccomodationService{
 	@Override
 	public Accomodation find(Accomodation accomodation) {
 		// TODO Auto-generated method stub
-		return accomodationRepository.findByLocationAndMaxPersonAndCategoryAndTypeAndOwnerAndNameAndDescription(accomodation.getLocation(),
-				accomodation.getMaxPerson(), accomodation.getCategory(), accomodation.getType(),accomodation.getOwner(), accomodation.getName(), accomodation.getDescription());
+		return accomodationRepository.findByMaxPersonAndNameAndDescription(accomodation.getMaxPerson(),
+				 accomodation.getName(), accomodation.getDescription());
 	}
 
 	

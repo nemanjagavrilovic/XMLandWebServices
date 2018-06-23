@@ -21,8 +21,8 @@ public interface AccomodationRepository extends PagingAndSortingRepository<Accom
 	@Query("Update Accomodation a set a.priceShedule=?1 where a.id=?2")
 	public void update(PriceShedule priceShedule,Long id);
 	
-	Accomodation findByLocationAndMaxPersonAndCategoryAndTypeAndOwnerAndNameAndDescription(
-			 Location location,int maxPerson,ObjectCategory category,ObjectType type,TUser owner,String name
+	Accomodation findByMaxPersonAndNameAndDescription(
+			 int maxPerson,String name
 			 ,String description);
 	
 }

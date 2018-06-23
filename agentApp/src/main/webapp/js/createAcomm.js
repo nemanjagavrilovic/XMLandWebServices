@@ -1,7 +1,7 @@
 var locationAccom;
 var type;
 var category;
-var services;
+var services=[];
 var priceShedule;
 var prices=[];
 var urls=[]
@@ -61,8 +61,13 @@ $(document).on('click',"#create",function(e){
 	getLocation()
 	getServices()
 	if($("#name").val()==""){
-		alert("Morate uneti ime!")
-		return;
+		return toastr.error("Morate uneti naziv")
+	}
+	if($("#description").val()==""){
+		return toastr.error("Morate uneti opis")
+	}
+	if($("#maxPerson").val()==""){
+		return toastr.error("Morate uneti kapacitet")
 	}
 	var accomodationID=0;
 	var accomodation=JSON.stringify({
@@ -97,7 +102,7 @@ $(document).on('click',"#create",function(e){
 			"price":prices
 		}),
 		success:function(data){
-			alert("Assigned")
+			 toastr.success("Uspesno kreiran smestaj")
 		}
 	})
 	setPictures(accomodationID)
@@ -200,12 +205,10 @@ function uploadImage() {
 		            	"url":image_url
 		            })
 		            urls.push(picture)
-		            alert("Uspesno aploadovana.");
 		            
 		        },
 		        error: function(data) {
 		            console.log(data);
-		            alert("Neuspesno.");
 		        }
 		    });
     }

@@ -6,7 +6,7 @@
 	<groupId>com.holiday</groupId>
 	<artifactId>agentApp</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>jar</packaging>
+	<packaging>war</packaging>
 
 	<name>agentApp</name>
 	<description>Demo project for Spring Boot</description>
@@ -25,6 +25,11 @@
 	</properties>
 
 	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-tomcat</artifactId>
+			<scope>provided</scope>
+		</dependency>
 		<dependency>
 			<groupId>org.springframework.session</groupId>
 			<artifactId>spring-session</artifactId>
@@ -45,10 +50,7 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
-		<dependency>
-			<groupId>org.apache.tomcat.embed</groupId>
-			<artifactId>tomcat-embed-jasper</artifactId>
-		</dependency>
+		
 		<dependency>
 		
 			<groupId>org.springframework.boot</groupId>
@@ -102,13 +104,14 @@
 	</dependencies>
 
 	<build>
+		<finalName>agent2</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
 			  
-			<plugin>
+		 	<plugin>
 			      <groupId>org.jvnet.jaxb2.maven2</groupId>
 			       <artifactId>maven-jaxb2-plugin</artifactId>
 			        <executions>
@@ -123,7 +126,7 @@
        			 <generatePackage>xml.wsdl</generatePackage>
 			          <schemas>
 			            <schema>
-			                <url>http://localhost:1111/Service/UserWebService?wsdl</url>
+			                <url>http://localhost:1111/Service/MessageWebService?wsdl</url>
 			            </schema>
 			        </schemas>
 			          </configuration>

@@ -1,4 +1,4 @@
-<project name="JAX-WS (Example 1)" default="main" basedir=".">
+<project name="AgentApp" default="main" basedir=".">
 
 	<property file="ant.properties" />
 

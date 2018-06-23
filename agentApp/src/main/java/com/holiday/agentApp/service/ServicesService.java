@@ -10,4 +10,6 @@ public interface ServicesService {
 	public Services save(Services service);
 	public Services findByOne(Long id);
 	public List<Services> findAll();
+	public void delete(Long id);
+
 }

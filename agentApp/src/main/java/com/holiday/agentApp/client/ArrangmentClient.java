@@ -6,6 +6,7 @@ import org.springframework.ws.client.core.support.WebServiceGatewaySupport;
 import org.springframework.ws.soap.client.core.SoapActionCallback;
 
 import com.holiday.agentApp.model.Arrangment;
+import com.holiday.agentApp.model.TUser;
 import com.holiday.agentApp.requestAndResponse.ArrangmentAllRequest;
 import com.holiday.agentApp.requestAndResponse.ArrangmentAllResponse;
 import com.holiday.agentApp.requestAndResponse.ArrangmentFindByAccOwnerRequest;
@@ -66,9 +67,9 @@ public class ArrangmentClient extends WebServiceGatewaySupport {
 
 	}
 	
-	public JAXBElement<ArrangmentFindByAccOwnerResponse> findByAccOwner(Long id){
+	public JAXBElement<ArrangmentFindByAccOwnerResponse> findByAccOwner(String pmb){
 		ArrangmentFindByAccOwnerRequest request = new ArrangmentFindByAccOwnerRequest();
-		request.setId(id);
+		request.setPmb(pmb);
 		@SuppressWarnings("unchecked")
 		JAXBElement<ArrangmentFindByAccOwnerResponse> response = (JAXBElement<ArrangmentFindByAccOwnerResponse>) getWebServiceTemplate()
 				.marshalSendAndReceive("http://localhost:1111/Service/ArrangmentsWebService?wsdl", request,

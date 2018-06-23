@@ -18,6 +18,7 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
 
 
@@ -45,7 +46,6 @@ import javax.xml.bind.annotation.XmlType;
 		"id",
 	    
     "content",
-    "inbox",
     "sentBy"
 })
 @Entity
@@ -75,7 +75,7 @@ public class Message {
     @XmlElement(namespace = "http://www.holiday.com/inbox", required = true)
     protected String content;
 
-    @XmlElement(namespace = "http://www.holiday.com/inbox", required = true)
+    @XmlTransient
     @ManyToOne
     protected Inbox inbox;
     

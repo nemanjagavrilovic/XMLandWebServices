@@ -28,5 +28,10 @@ public class ServicesServiceImpl implements ServicesService{
 		// TODO Auto-generated method stub
 		return (List<Services>) servicesRepository.findAll();
 	}
+	@Override
+	public void delete(Long id) {
+		// TODO Auto-generated method stub
+		servicesRepository.delete(id);
+	}
 
 }

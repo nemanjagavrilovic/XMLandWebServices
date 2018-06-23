@@ -111,10 +111,18 @@ display:inline;
 	
 }
 .comments{
-	width:300px;
+	width:500px;
 	height:500px;
 	left:-300px;
 	float:left;
+	overflow:auto;
+}
+.ratings{
+	width:500px;
+	height:500px;
+	left:500px;
+	float:left;
+	overflow:auto;
 }
 .accomTable td, .accomTable th {
     border: 1px solid #ddd;

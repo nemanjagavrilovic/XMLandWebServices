@@ -83,6 +83,9 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Entity
 public class Accomodation implements Serializable {
 	
+	public void setServices(List<Services> services) {
+		this.services = services;
+	}
 	public void setId(Long id) {
 		this.id = id;
 	}

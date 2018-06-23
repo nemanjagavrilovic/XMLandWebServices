@@ -19,7 +19,16 @@ $(document).on('click','#link',function(e){
 	})
 })
 function drawMessage(index,item){
-	if(item.sentBy.email=='nemanja.gavrilovic1995@gmail.com'){
+	var loggedUser;
+	$.ajax({
+		url:"../inbox/loggedUser",
+		type:'GET',
+		async:false,
+		success:function(data){
+			loggedUser=data;
+		}
+	})
+	if(item.sentBy.email==loggedUser.email){
 		$(".messages").append('<br><br><div class=sent>'+item.content+'</div>')
 	}else{
 		$(".messages").append('<br><br><div class=received>'+item.content+'</div>')

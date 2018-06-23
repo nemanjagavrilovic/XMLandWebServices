@@ -6,4 +6,5 @@ public interface UserService {
 
 	TUser save(TUser user);
 	TUser findById(Long id);
+	TUser findByEmailAndPassword(String email,String password);
 }

@@ -6,12 +6,14 @@
 <html>
 <head>
 <script type="text/javascript"	src="${pageContext.request.contextPath}/js/jquery.min.js"> </script>
+<script type="text/javascript"	src="${pageContext.request.contextPath}/toastr.js"> </script>
 <script type="text/javascript"	src="${pageContext.request.contextPath}/js/accomodation.js"> </script>
 <script	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <link rel="stylesheet"	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/accomodation.css">
-
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/toastr.css">
+	
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Accomodations</title>
 </head>
@@ -75,8 +77,9 @@
 			</div>
 		</div>
 		</div>
+		Comments:
 		<div class="comments">
-			<c:forEach items="${accom.comment }" var="comment">
+			<c:forEach items="${comments }" var="comment">
 				<div class="panel panel-primary" style="width:400px;height:100px;overflow:auto;top:100px;">
 					<div class="panel-heading">${comment.author.name} ${comment.author.surname}</div>
 					<div class="panel-body" style="max-width:500px;overflow:auto">${comment.content }</div>
@@ -85,7 +88,17 @@
 			</c:forEach>
 	
 		</div>
+		Ratings:
+		<div class="ratings">
+			<c:forEach items="${ratings }" var="rating">
+				<div class="panel panel-primary" style="width:400px;height:100px;overflow:auto;top:100px;">
+					<div class="panel-heading">${rating.owner.name} ${rating.owner.surname}</div>
+					<div class="panel-body" style="max-width:500px;overflow:auto">${rating.rating }</div>
+				</div>
+		
+			</c:forEach>
 	
+		</div>
 	</div>
 	<div class="modal fade" id="reservationModal" tabindex="-1" role="dialog">
 		  <div class="modal-dialog" role="document">

@@ -35,10 +35,10 @@
              id="bs-example-navbar-collapse-1">
             <c:if test="${not empty user}">
             <ul id="nav" class="nav navbar-nav">
-				<li><a href="/createAccomodation/">Create accomodation</a>
-				<li><a href="/arrangments/">Arrangments</a></li>
-				<li><a href="/accomodations/all">Accomodations</a></li>
-				<li><a href="/inbox/">Inbox</a></li>
+				<li><a href="/agent2/createAccomodation/">Create accomodation</a>
+				<li><a href="/agent2/arrangments/">Arrangments</a></li>
+				<li><a href="/agent2/accomodations/all">Accomodations</a></li>
+				<li><a href="/agent2/inbox/">Inbox</a></li>
           	</ul>
           	</c:if>
             <ul class="nav navbar-nav navbar-right">
@@ -47,7 +47,7 @@
               
                 </c:if>
                 <c:if test="${not empty user}">
-                    <li><a href="/login/logout">Log out</a></li>
+                    <li><a href="/agent2/login/logout">Log out</a></li>
                 </c:if>
 
             </ul>

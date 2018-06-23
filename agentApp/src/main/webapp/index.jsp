@@ -4,7 +4,12 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+
 <script type="text/javascript"	src="${pageContext.request.contextPath}/js/jquery.min.js"> </script>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/toastr.css">
+
+<script type="text/javascript"	src="${pageContext.request.contextPath}/toastr.js"> </script>
+
 <script type="text/javascript"	src="${pageContext.request.contextPath}/js/index.js"> </script>
 	<script	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <link rel="stylesheet"	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">

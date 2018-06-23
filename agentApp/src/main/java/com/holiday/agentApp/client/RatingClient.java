@@ -5,7 +5,10 @@ import javax.xml.bind.JAXBElement;
 import org.springframework.ws.client.core.support.WebServiceGatewaySupport;
 import org.springframework.ws.soap.client.core.SoapActionCallback;
 
+import com.holiday.agentApp.model.Accomodation;
 import com.holiday.agentApp.model.Rating;
+import com.holiday.agentApp.requestAndResponse.RatingFindByAccRequest;
+import com.holiday.agentApp.requestAndResponse.RatingFindByAccResponse;
 import com.holiday.agentApp.requestAndResponse.RatingFindByIdRequest;
 import com.holiday.agentApp.requestAndResponse.RatingFindByIdResponse;
 import com.holiday.agentApp.requestAndResponse.RatingSaveRequest;
@@ -27,6 +30,15 @@ public class RatingClient extends WebServiceGatewaySupport{
 		JAXBElement<RatingSaveResponse> response=(JAXBElement<RatingSaveResponse>)getWebServiceTemplate().
 				marshalSendAndReceive("http://localhost:1111/Service/RatingWebService?wsdl",request,
 						new SoapActionCallback("http://webService.projekat.xml/save"));
+		return response;
+	}
+	
+	public JAXBElement<RatingFindByAccResponse> findByAccomodation(Accomodation acc){
+		RatingFindByAccRequest request=new RatingFindByAccRequest();
+		request.setAcc(acc);
+		JAXBElement<RatingFindByAccResponse> response=(JAXBElement<RatingFindByAccResponse>)getWebServiceTemplate().
+				marshalSendAndReceive("http://localhost:1111/Service/RatingWebService?wsdl",request,
+						new SoapActionCallback("http://webService.projekat.xml/findByAcc"));
 		return response;
 	}
 }

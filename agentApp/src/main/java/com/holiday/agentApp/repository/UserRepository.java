@@ -8,4 +8,5 @@ import com.holiday.agentApp.model.TUser;
 @Repository
 public interface UserRepository extends PagingAndSortingRepository<TUser,Long>{
 
+	public TUser findByEmailAndPassword(String email,String password);
 }
