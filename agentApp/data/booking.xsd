@@ -16,6 +16,7 @@
                 <xs:element name="author" type="sys:TUser"/>
                 <xs:element name="content" type="xs:string"/>
                 <xs:element name="approved" type="xs:boolean"/>
+                <xs:element ref="sys:Accomodation"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
@@ -49,7 +50,7 @@
     <xs:element name="services">
         <xs:complexType>
             <xs:all>
-                <xs:element minOccurs="0" name="service" type="xs:string"/>
+                <xs:element minOccurs="0" name="service" type="xs:boolean"/>
             </xs:all>
         </xs:complexType>
     </xs:element>
@@ -57,7 +58,7 @@
         <xs:complexType>
             <xs:sequence>
                 <xs:element ref="sys:Accomodation"/>
-                <xs:element name="content" type="xs:string"/>
+                <xs:element name="content" type="xs:float"/>
                 <xs:element name="Owner" type="sys:User"/>
             </xs:sequence>
         </xs:complexType>
@@ -71,6 +72,7 @@
                             <xs:element name="dateStart" type="xs:date"/>
                             <xs:element name="dateEnd" type="xs:date"/>
                             <xs:element name="value" type="xs:float"/>
+                            <xs:element ref="sys:Price_shedule"/>
                         </xs:sequence>
                     </xs:complexType>
                 </xs:element>
@@ -79,7 +81,11 @@
     </xs:element>
     <xs:complexType name="User">
         <xs:complexContent>
-            <xs:extension base="sys:TUser"/>
+            <xs:extension base="sys:TUser">
+                <xs:sequence>
+                    <xs:element default="false" name="blocked" type="xs:boolean"/>
+                </xs:sequence>
+            </xs:extension>
         </xs:complexContent>
     </xs:complexType>
     <xs:complexType name="Admin">
@@ -101,14 +107,14 @@
     <xs:element name="objectType">
         <xs:complexType>
             <xs:sequence>
-                <xs:element name="type" type="xs:string"/>
+                <xs:element name="type" type="xs:boolean"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
     <xs:element name="objectCategory">
         <xs:complexType>
             <xs:sequence>
-                <xs:element name="category" type="xs:string"/>
+                <xs:element name="category" type="xs:boolean"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
@@ -116,7 +122,6 @@
         <xs:complexType>
             <xs:sequence>
                 <xs:element name="url" type="xs:string"/>
-                <xs:element ref="sys:Accomodation"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>

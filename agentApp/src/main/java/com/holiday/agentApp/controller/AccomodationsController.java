@@ -21,14 +21,18 @@ import com.holiday.agentApp.client.ObjectCategoryClient;
 import com.holiday.agentApp.client.ObjectTypeClient;
 import com.holiday.agentApp.client.RatingClient;
 import com.holiday.agentApp.client.ServiceClient;
+import com.holiday.agentApp.client.UserClient;
 import com.holiday.agentApp.model.Accomodation;
+import com.holiday.agentApp.model.Agent;
 import com.holiday.agentApp.model.ObjectCategory;
 import com.holiday.agentApp.model.ObjectType;
 import com.holiday.agentApp.model.Services;
+import com.holiday.agentApp.model.TUser;
 import com.holiday.agentApp.requestAndResponse.AccomodationFindResponse;
 import com.holiday.agentApp.requestAndResponse.ObjectCategoryAllResponse;
 import com.holiday.agentApp.requestAndResponse.ObjectTypeAllResponse;
 import com.holiday.agentApp.requestAndResponse.ServiceAllResponse;
+import com.holiday.agentApp.requestAndResponse.UserFindByEmailAndPasswordResponse;
 import com.holiday.agentApp.service.AccomodationService;
 
 @Controller
@@ -57,6 +61,9 @@ public class AccomodationsController {
 
 	@Autowired
 	private CommentClient commentClient;
+	
+	@Autowired
+	private UserClient userClient;
 	@RequestMapping("/accomodation/{id}")
 	public String getAccomodation(@PathVariable ("id") Long id,HttpServletRequest request){
 	        
@@ -76,8 +83,8 @@ public class AccomodationsController {
 		return "forward:/myAccomodations.jsp";
 	}
 	@RequestMapping("/publish/{id}")
-	public ResponseEntity<?> publish(@PathVariable("id") Long id){
-		
+	public ResponseEntity<?> publish(HttpServletRequest request,@PathVariable("id") Long id){
+		TUser user=(TUser) request.getSession().getAttribute("user");
 		Accomodation ac=accomodationService.findById(id);
 		JAXBElement<ObjectCategoryAllResponse> objectCategory = (JAXBElement<ObjectCategoryAllResponse>) categoryClient
 				.findAll();
@@ -105,15 +112,26 @@ public class AccomodationsController {
 			for(Services item:services.getValue().getServices()){
 				for(Services item2: ac.getServices()){
 					if(item.getService().equals(item2.getService())){
-						System.out.println("Servis 1"+item.getService());
-						
-						System.out.println("Servis 2"+item2.getService());
+						System.out.println("servis 1"+item.getService());
+
+						System.out.println("servis 2"+item2.getService());
 						newServices.add(item);
 					}
 				}
 				
 			}
+				System.out.println(ac.getDescription());
+				System.out.println(ac.getMaxPerson());
+				System.out.println(ac.getName());
+				System.out.println("C"+ac.getCategory().getId());
+				System.out.println("T"+ac.getType().getId());
+				System.out.println("L"+ac.getLocation().getId());
+				JAXBElement<UserFindByEmailAndPasswordResponse> response=userClient.userFindByEmailAndPassword(user.getEmail(), user.getPassword());
+				ac.setId(10L);
 				ac.setServices(newServices);
+				ac.setOwner((Agent)response.getValue().getUser());
+				System.out.println("Owner"+ac.getOwner().getId());
+				
 				accomodationClient.save(ac);
 
 		}

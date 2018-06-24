@@ -11,6 +11,7 @@
                 <xs:element name="numberOfPeople" type="xs:int"/>
                 <xs:element name="Owner" type="sys:User"/>
                 <xs:element name="realized" type="xs:boolean"/>
+                <xs:element ref="sys:Raiting"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>

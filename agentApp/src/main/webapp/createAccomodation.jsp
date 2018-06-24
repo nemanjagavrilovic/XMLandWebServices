@@ -57,7 +57,7 @@
 				
 				<select id="services" multiple="multiple" size="5" class="form-control">
 					<c:forEach items="${services}"  var="service">
-						<option id=${service.id }>${service.service }</option>
+						<option id=${service.service }>${service.service }</option>
 					</c:forEach>
 			
 				</select>

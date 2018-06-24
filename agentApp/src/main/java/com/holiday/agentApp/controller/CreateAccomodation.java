@@ -130,7 +130,7 @@ public class CreateAccomodation {
 		System.out.println(servicesID);
 		List<Services> services=new ArrayList<Services>();
 		for(String item:servicesID){
-			services.add(serviceClient.findById(Long.parseLong(item.trim())).getValue().getService());
+			services.add(servicesService.find(item));
 		}
 		return new ResponseEntity<List<Services>>(services,HttpStatus.OK);	
 	}

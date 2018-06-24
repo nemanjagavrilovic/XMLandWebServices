@@ -8,6 +8,7 @@
             <xs:sequence>
                 <xs:element name="content" type="xs:string"/>
                 <xs:element name="sentBy" type="sys:TUser"/>
+                <xs:element ref="ibx:Inbox"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
@@ -17,7 +18,6 @@
                 <xs:element name="sender" type="sys:TUser"/>
                 <xs:element name="receiver" type="sys:TUser"/>
                 <xs:element maxOccurs="unbounded" ref="ibx:Message"/>
-                <xs:element ref="ibx:Inbox"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>

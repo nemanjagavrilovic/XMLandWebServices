@@ -35,19 +35,19 @@
              id="bs-example-navbar-collapse-1">
             <c:if test="${not empty user}">
             <ul id="nav" class="nav navbar-nav">
-				<li><a href="/agent2/createAccomodation/">Create accomodation</a>
-				<li><a href="/agent2/arrangments/">Arrangments</a></li>
-				<li><a href="/agent2/accomodations/all">Accomodations</a></li>
-				<li><a href="/agent2/inbox/">Inbox</a></li>
+				<li><a href="/agent1/createAccomodation/">Create accomodation</a>
+				<li><a href="/agent1/arrangments/">Arrangments</a></li>
+				<li><a href="/agent1/accomodations/all">Accomodations</a></li>
+				<li><a href="/agent1/inbox/">Inbox</a></li>
           	</ul>
           	</c:if>
             <ul class="nav navbar-nav navbar-right">
                 <c:if test="${empty user}">
-                    <li><a href="/index.jsp" id="Login">Log in</a></li>
+                    <li><a href="/agent1/index.jsp" id="Login">Log in</a></li>
               
                 </c:if>
                 <c:if test="${not empty user}">
-                    <li><a href="/agent2/login/logout">Log out</a></li>
+                    <li><a href="/agent1/login/logout">Log out</a></li>
                 </c:if>
 
             </ul>

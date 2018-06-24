@@ -42,7 +42,7 @@ public class AccomodationServiceImpl implements AccomodationService{
 	@Override
 	public Accomodation find(Accomodation accomodation) {
 		// TODO Auto-generated method stub
-		return accomodationRepository.findByMaxPersonAndNameAndDescription(accomodation.getMaxPerson(),
+		return accomodationRepository.findByNameAndDescription(
 				 accomodation.getName(), accomodation.getDescription());
 	}
 

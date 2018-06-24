@@ -8,4 +8,5 @@ import com.holiday.agentApp.model.Services;
 @Repository
 public interface ServicesRepository extends PagingAndSortingRepository<Services,Long>{
 
+	Services findByService(String name);
 }

@@ -33,5 +33,10 @@ public class ServicesServiceImpl implements ServicesService{
 		// TODO Auto-generated method stub
 		servicesRepository.delete(id);
 	}
+	@Override
+	public Services find(String name) {
+		// TODO Auto-generated method stub
+		return servicesRepository.findByService(name);
+	}
 
 }

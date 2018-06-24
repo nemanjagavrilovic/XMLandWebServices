@@ -117,6 +117,9 @@ public class ObjectFactory {
     private final static QName _MessageUpdateRequest_QNAME = new QName("http://webService.projekat.xml/", "messageUpdateRequest");
     private final static QName _MessageUpdateResponse_QNAME = new QName("http://webService.projekat.xml/", "messageUpdateResponse");
     
+    private final static QName _ServiceByNameRequest_QNAME = new QName("http://webService.projekat.xml/", "serviceByNameRequest");
+    private final static QName _ServiceByNameResponse_QNAME = new QName("http://webService.projekat.xml/", "serviceByNameResponse");
+
     /**
      * Create an instance of {@link CommentFindByAccResponse }
      * 
@@ -139,7 +142,20 @@ public class ObjectFactory {
     public AccomodationFindResponse createAccomodationFindResponse() {
         return new AccomodationFindResponse();
     }
-    
+    /**
+     * Create an instance of {@link ServiceByNameResponse }
+     * 
+     */
+    public ServiceByNameResponse createServiceByNameResponse() {
+        return new ServiceByNameResponse();
+    }
+    /**
+     * Create an instance of {@link ServiceByNameRequest }
+     * 
+     */
+    public ServiceByNameRequest createServiceByNameRequest() {
+        return new ServiceByNameRequest();
+    }
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: xml.wsdl
      * 
@@ -1173,5 +1189,22 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://webService.projekat.xml/", name = "messageUpdateResponse")
     public JAXBElement<MessageUpdateResponse> createMessageUpdateResponse(MessageUpdateResponse value) {
         return new JAXBElement<MessageUpdateResponse>(_MessageUpdateResponse_QNAME, MessageUpdateResponse.class, null, value);
+    }
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ServiceByNameRequest }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://webService.projekat.xml/", name = "serviceByNameRequest")
+    public JAXBElement<ServiceByNameRequest> createServiceByNameRequest(ServiceByNameRequest value) {
+        return new JAXBElement<ServiceByNameRequest>(_ServiceByNameRequest_QNAME, ServiceByNameRequest.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ServiceByNameResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://webService.projekat.xml/", name = "serviceByNameResponse")
+    public JAXBElement<ServiceByNameResponse> createServiceByNameResponse(ServiceByNameResponse value) {
+        return new JAXBElement<ServiceByNameResponse>(_ServiceByNameResponse_QNAME, ServiceByNameResponse.class, null, value);
     }
 }

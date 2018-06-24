@@ -5,7 +5,7 @@ $(document).on('click','#login',function(e){
 		"password":$("#password").val()
 	})
 	$.ajax({
-		url:'/agent2/login/signIn',
+		url:'/agent1/login/signIn',
 		type:'POST',
 		contentType:'application/json',
 		dataType:'json',

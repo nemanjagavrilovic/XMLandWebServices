@@ -104,7 +104,7 @@
 	</dependencies>
 
 	<build>
-		<finalName>agent2</finalName>
+		<finalName>agent1</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
@@ -126,7 +126,7 @@
        			 <generatePackage>xml.wsdl</generatePackage>
 			          <schemas>
 			            <schema>
-			                <url>http://localhost:1111/Service/MessageWebService?wsdl</url>
+			                <url>http://localhost:1111/Service/ServiceWebService?wsdl</url>
 			            </schema>
 			        </schemas>
 			          </configuration>
