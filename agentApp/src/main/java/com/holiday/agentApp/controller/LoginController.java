@@ -167,18 +167,6 @@ public class LoginController {
 			for (Services service : services.getValue().getServices()) {
 				servicesService.save(service);
 			}
-			System.out.println("PROSLOOOOOO 5.");
-			
-			JAXBElement<AccomodationFindByOwnerResponse> accomodations = accomodationClient
-					.findByOwner(loggedUser);
-			for (Accomodation accomodation : accomodations.getValue().getAccomodation()) {
-				for (Rating item : accomodation.getRating()) {
-					ratingService.save(ratingClient.findById(item.getId()).getValue().getRating());
-				}
-
-			//	accomodationService.save(accomodation);
-			}
-			System.out.println("PROSLOOOOOO 1.");
 			Agent a=(Agent) loggedUser;
 			JAXBElement<ArrangmentFindByAccOwnerResponse> response = arrangmentClient.findByAccOwner(a.getPMB());
 			arrangmentService.deleteAll();
